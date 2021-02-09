@@ -1,12 +1,14 @@
 Unity Project Template
 =============
 
+
 <p align="center">
     <img src="./README.png" alt="Entitas">
 </p>
 
-1. Unity — Project Structure Best Practices
+A. Unity — Project Structure Best Practices
 =============
+
 
 Scope:
 * Folder Structure
@@ -19,8 +21,9 @@ Benefits:
 * Maintenance — Consistent project structure will aid readability. Readability helps new and existing programmers revisit the code base for fixes and improvements.
 * Communication — Developers more implicitly understand each other in written and verbal communication.
 
-2. Coding Standards
+B. Coding Standards
 =============
+
 This repo holds the code for the Coding Standards.
 
 Coding standards define a programming style. A coding standard does not usually concern itself with wrong or right in a more abstract sense. It is simply a set of rules and guidelines for the formatting of source code.
@@ -54,8 +57,8 @@ ToDo
 
 Resources
 =============
-* 1. Medium Article - <a href="https://sam-16930.medium.com/unity-project-structure-a694792cefed">Unity — Project Structure Best Practices</a>
-* 2. Medium Article - <a href="https://sam-16930.medium.com/coding-standards-in-c-39aefee92db8">Unity — C# Coding Standards</a>
+* A. Medium Article - <a href="https://sam-16930.medium.com/unity-project-structure-a694792cefed">Unity — Project Structure Best Practices</a>
+* B. Medium Article - <a href="https://sam-16930.medium.com/coding-standards-in-c-39aefee92db8">Unity — C# Coding Standards</a>
 
 
 Created By
