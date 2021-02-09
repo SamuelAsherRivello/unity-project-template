@@ -1,10 +1,9 @@
 Unity Project Template
 =============
 
+This repo includes Project Structure Best Practices and C# Coding Standards for Unity.
 
-<p align="center">
-    <img src="./README.png" alt="Entitas">
-</p>
+<img src="./README.png" alt="Best Practices">
 
 A. Unity — Project Structure Best Practices
 =============
