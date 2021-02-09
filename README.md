@@ -9,6 +9,7 @@ Unity Project Template
 A. Unity — Project Structure Best Practices
 =============
 
+Employing an organized project structure is beneficial to your project and your team.
 
 Scope:
 * Folder Structure
@@ -24,9 +25,9 @@ Benefits:
 B. Coding Standards
 =============
 
-This repo holds the code for the Coding Standards.
+Coding standards define a programming style. 
 
-Coding standards define a programming style. A coding standard does not usually concern itself with wrong or right in a more abstract sense. It is simply a set of rules and guidelines for the formatting of source code.
+Employing organized coding standards is beneficial to your project and your team.
 
 Scope:
 
@@ -46,14 +47,6 @@ Benefits:
 * Minimizes Communication
 * Minimizes Performance Pitfalls
 * Saves Money Due to Less Man Hours 
-
-Open Questions
-=============
-* None
-
-ToDo
-=============
-* None
 
 Resources
 =============
