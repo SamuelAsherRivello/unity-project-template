@@ -56,9 +56,13 @@ Resources
 Created By
 =============
 
-- Samuel Asher Rivello (<a href="https://twitter.com/srivello/">@srivello</a>)
-- <a href="http://www.SamuelAsherRivello.com">SamuelAsherRivello.com</a>
-- <a href="https://github.com/SamuelAsherRivello/">Github.com/SamuelAsherRivello/</a>
+- Samuel Asher Rivello 
+- Over 20 years XP with game development (2020)
+- Over 8 years XP with Unity (2020)
+- Resume & Portfolio - <a href="http://www.SamuelAsherRivello.com">SamuelAsherRivello.com</a>
+- Git - <a href="https://github.com/SamuelAsherRivello/">Github.com/SamuelAsherRivello</a>
+- LinkedIn - <a href="Linkedin.com/in/SamuelAsherRivello">Linkedin.com/in/SamuelAsherRivello</a>
+- Twitter - (<a href="https://twitter.com/srivello/">@srivello</a>)
 
 
 
