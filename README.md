@@ -26,6 +26,8 @@ B. Coding Standards
 
 Coding standards define a programming style. 
 
+See the repo's <a href="https://github.com/SamuelAsherRivello/unity-project-template/tree/master/Unity/Assets/Scripts/Runtime/RMC/Templates">C# Templates</a> for more info.
+
 Employing organized coding standards is beneficial to your project and your team.
 
 Scope:
