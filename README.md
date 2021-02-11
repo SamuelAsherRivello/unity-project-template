@@ -1,17 +1,36 @@
-<p align="center">
-    <img src="./README.png" alt="Entitas">
-</p>
-
-Coding Standards
+Unity Project Template
 =============
-This repo holds the code for the Coding Standards.
 
-* C#
-* C++
+This repo includes Project Structure Best Practices and C# Coding Standards for Unity.
 
-Coding standards define a programming style. A coding standard does not usually concern itself with wrong or right in a more abstract sense. It is simply a set of rules and guidelines for the formatting of source code.
+<img src="./README.png" alt="Best Practices">
 
-Common Aspects of a Coding Standard:
+A. Unity — Project Structure Best Practices
+=============
+
+Employing an organized project structure is beneficial to your project and your team.
+
+Scope:
+* Folder Structure
+* Folder Naming
+* File Naming
+
+Benefits:
+
+* Consistency — The project structure has consistency in presentation regardless of team location, spoken language, or individual programmers.
+* Maintenance — Consistent project structure will aid readability. Readability helps new and existing programmers revisit the code base for fixes and improvements.
+* Communication — Developers more implicitly understand each other in written and verbal communication.
+
+B. Coding Standards
+=============
+
+Coding standards define a programming style. 
+
+See the repo's <a href="https://github.com/SamuelAsherRivello/unity-project-template/tree/master/Unity/Assets/Scripts/Runtime/RMC/Templates">C# Templates</a> for more info.
+
+Employing organized coding standards is beneficial to your project and your team.
+
+Scope:
 
 * Naming Conventions
 * File Naming and Organization
@@ -19,12 +38,6 @@ Common Aspects of a Coding Standard:
 * Comments and Documentation
 * Classes, Functions and Interfaces
 * Testing
-
-Sometimes a coding standard is an accepted practice for a particular language. For instance, programmers generally accept that when writing C# source code they will write parameters and private and protected fields using Camel casing. They will write all other identifiers using Pascal casing. What this means for the C# programmer is that they can look at a piece of C# source code written by another and quickly indentify segments. This increases readability substantially.
-
-The other common type of coding standard is the one used in or between development teams. Consider that professional code does not simply perform a job. Professional code performs a job in such a way that it is easy to maintain and debug.
-
-In professional environments, the benefits of coding standards are readability, maintainability and compatibility. Any member of a development should be able to read the code of another member. The coder who maintains a piece of code tomorrow may not be the coder who programmed it today. In addition, today’s enterprise solutions are so complex that multiple development teams unite to build a singular enterprise software application. With coding standards, distinct teams can rely o­n the way that they can interface with the code built by a separate team.
 
 Benefits:
 
@@ -36,18 +49,26 @@ Benefits:
 * Minimizes Performance Pitfalls
 * Saves Money Due to Less Man Hours 
 
-Open Questions
+Resources
 =============
-* None
-
-TODO
-=============
-* Done
+* A. Medium Article - <a href="https://sam-16930.medium.com/unity-project-structure-a694792cefed">Unity — Project Structure Best Practices</a>
+* B. Medium Article - <a href="https://sam-16930.medium.com/coding-standards-in-c-39aefee92db8">Unity — C# Coding Standards</a>
 
 
 Created By
 =============
 
-- Samuel Asher Rivello <a href="https://twitter.com/srivello/">@srivello</a>, <a href="http://www.github.com/RivelloMultimediaConsulting/">Github</a>, <a href="http://RivelloMultimediaConsulting.com/unity/">RivelloMultimediaConsulting.com</a>, <a href="http://www.UnityGameDeveloper.com/">UnityGameDeveloper.com</a>, <a href="http://www.SamuelAsherRivello.com">SamuelAsherRivello.com</a>
+- Samuel Asher Rivello 
+- Over 20 years XP with game development (2020)
+- Over 8 years XP with Unity (2020)
+
+Contact
+=============
+
+- Twitter - <a href="https://twitter.com/srivello/">@srivello</a>
+- Resume & Portfolio - <a href="http://www.SamuelAsherRivello.com">SamuelAsherRivello.com</a>
+- Git - <a href="https://github.com/SamuelAsherRivello/">Github.com/SamuelAsherRivello</a>
+- LinkedIn - <a href="https://Linkedin.com/in/SamuelAsherRivello">Linkedin.com/in/SamuelAsherRivello</a> <--- Say Hello! :)
+
 
 
