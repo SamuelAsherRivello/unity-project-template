@@ -50,7 +50,7 @@ namespace RMC.Templates
 
 
 		//  Event Handlers --------------------------------
-		public void Target_OnEventOccurred(string message)
+		public void Target_OnCompleted(string message)
 		{
 
 		}
