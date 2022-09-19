@@ -2,13 +2,14 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
+[Uu]nity/[Ll]ibrary/
+[Uu]nity/[Tt]emp/
+[Uu]nity/[Oo]bj/
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
-[Uu]ser[Ss]ettings/
+[Uu]nity/[Uu]ser[Ss]ettings/
+[Uu]nity/.idea
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -72,3 +73,4 @@ crashlytics-build.properties
 
 # Visual Studio
 *.vsconfig
+Unity/.idea/.idea.Unity/.idea/projectSettingsUpdater.xml
