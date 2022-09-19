@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbf97db7a39f7034cb1921274cbfaaaa, type: 3}
+  m_Name: ReadMe
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 7c0822b0780ca4a74b276e50db2c68a3, type: 3}
+  title: Unity Project Template
+  sections:
+  - heading: Introduction
+    subheading: Unity Project Template
+    text: This repo includes Project Structure Best Practices and C# Coding Standards for Unity. It is a recommended starting point for new projects.
+    linkText: Github.com/SamuelAsherRivello/unity-project-template
+    url: https://github.com/SamuelAsherRivello/unity-project-template
+  - heading: 
+    subheading: Created By
+    text: With over 20 years of experience making great games, Sam not only follows the latest innovations – he defines them.
+    linkText: SamuelAsherRivello.com
+    url: https://SamuelAsherRivello.com
+  - heading: Getting Started
+    subheading: 1. Update Unity Layout & Aspect Ratio
+    text: Use default layout or choose your own
+    linkText: 
+    url: 
+    openMenuName: Load Moralis Layout (10x16)
+    openMenuNameId: Window/RMC/ReadMe/Load Layout (10x16)
+  - heading: 
+    subheading:
+    text: 
+    linkText: 
+    url: 
+    openMenuName: Load Moralis Layout (16x10)
+    openMenuNameId: Window/RMC/ReadMe/Load Layout (16x10)
+  - heading: 
+    subheading: 2. Open Any Example Scene
+    text: Play this scene or choose your ownS
+    linkText: 
+    url: 
+    pingObjectName: Scene01_Intro
+    pingObjectGuid: 72f7cde6697d6214e927b487784a8bea
+  - heading: Contact
+    subheading: 
+    text: Available as a Web3 Developer and Instructor - Unity Certified. Contact Sam to dicuss any remote, contract opportunities.
+    linkText: SamuelAsherRivello.com/Contact
+    url: SamuelAsherRivello.com/Contact
+  loadedLayout: 1

@@ -1,0 +1,8 @@
+Source Url: 
+* https://assetstore.unity.com/packages/essentials/tutorial-projects/ui-toolkit-sample-dragon-crashers-231178
+
+Changelog: 
+* Deleted ALL files except the few related to ReadMe
+* Renamed and updated files to greatly expand layout options within the Unity Editor Window
+* Added MenuItems
+* Moved to /Assets/3rdParty/
