@@ -79,8 +79,9 @@ Benefits:
 
 Resources
 =============
-* A. Medium Article - <a href="https://sam-16930.medium.com/unity-project-structure-a694792cefed">Unity — Project Structure Best Practices</a>
-* B. Medium Article - <a href="https://sam-16930.medium.com/coding-standards-in-c-39aefee92db8">Unity — C# Coding Standards</a>
+* A. Sam's Medium Article - <a href="https://sam-16930.medium.com/unity-project-structure-a694792cefed">Unity — Project Structure Best Practices</a>
+* B. Sam's Medium Article - <a href="https://sam-16930.medium.com/coding-standards-in-c-39aefee92db8">Unity — C# Coding Standards</a>
+* C. Unity's Official How-To - <a href="https://unity.com/how-to/organizing-your-project#folder-structure">Unity — Organizing Your Project </a> 
 
 
 Created By
