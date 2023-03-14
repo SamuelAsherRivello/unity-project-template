@@ -15,11 +15,7 @@ namespace RMC.Templates
 
 
 		//  Properties ------------------------------------
-		public string SamplePublicText
-		{
-			get { return _samplePublicText; }
-			set { _samplePublicText = value; }
-		}
+		public string SamplePublicText { get { return _samplePublicText; } set { _samplePublicText = value; }}
 
 
 		//  Fields ----------------------------------------

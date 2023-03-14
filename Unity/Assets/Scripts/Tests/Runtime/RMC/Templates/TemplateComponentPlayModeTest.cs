@@ -12,6 +12,7 @@ namespace RMC.Templates
 	/// <summary>
 	/// Replace with comments...
 	/// </summary>
+	[Category("RMC.MyProject")]
 	public class TemplateComponentPlayModeTest
 	{
 		//  Fields ----------------------------------------

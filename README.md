@@ -3,18 +3,39 @@
 
 This repo includes Project Structure Best Practices and C# Coding Standards for Unity.
 
-<img width="200" src="./Unity/Assets/Documentation/Images/ProjectIcon.png" alt="Best Practices">
+<img width="200" src="./Unity/Assets/Documentation/ReadMe/Art/Sprites/ProjectIcon.png" alt="Best Practices">
 
 **Getting Started**
 1. Download this repo (*.zip or *.git)
-2. Download the [Unity Editor](https://store.unity.com/#plans-individual)
-3. Open this repo in the Unity Editor
-4. Enjoy
+1. Download the [Unity Editor](https://store.unity.com/#plans-individual)
+1. Open this repo in the Unity Editor
+1. Enjoy
 
 ---
 
+### Features
+
+<img width = "400" src="./Unity/Assets/Documentation/Images/Screenshot.png" />
+
+This project is a living template. It showcases the best practices and coding standards for many common workflows.
+
+**Includes Templates For** ...
+* Git Repo - Structure, .gitignore, ReadMe.md
+* Scene Hiearchy Window - Structure
+* Project Window - Structure
+* Inspector Window - ReadMe.asset
+* Runtime Coding
+* Editor Coding 
+* Unit Testing 
+
+
+
+---
+
+### Overview
+
 **Documentation**
-* `README.md` - The primary documentation for this repo
+* `ReadMe.md` - The primary documentation for this repo
 * `Unity/Assets/Documentation/ReadMe.asset` - Select this asset in Unity to get started
 
 **Configuration**
@@ -32,9 +53,11 @@ This repo includes Project Structure Best Practices and C# Coding Standards for 
 
 ----
 
-
-A. Unity — Project Structure Best Practices
+More
 =============
+
+### A. Unity — Project Structure Best Practices
+
 
 Employing an organized project structure is beneficial to your project and your team.
 
@@ -49,8 +72,7 @@ Benefits:
 * Maintenance — Consistent project structure will aid readability. Readability helps new and existing programmers revisit the code base for fixes and improvements.
 * Communication — Developers more implicitly understand each other in written and verbal communication.
 
-B. Coding Standards
-=============
+### B. Coding Standards
 
 Coding standards define a programming style. 
 
@@ -79,9 +101,8 @@ Benefits:
 
 Resources
 =============
-* A. Sam's Medium Article - <a href="https://sam-16930.medium.com/unity-project-structure-a694792cefed">Unity — Project Structure Best Practices</a>
-* B. Sam's Medium Article - <a href="https://sam-16930.medium.com/coding-standards-in-c-39aefee92db8">Unity — C# Coding Standards</a>
-* C. Unity's Official How-To - <a href="https://unity.com/how-to/organizing-your-project#folder-structure">Unity — Organizing Your Project </a> 
+* Samuel Asher Rivello's Medium Article - <a href="https://sam-16930.medium.com/unity-project-structure-a694792cefed">Unity — Project Structure Best Practices</a>
+* Samuel Asher Rivello's Medium Article - <a href="https://sam-16930.medium.com/coding-standards-in-c-39aefee92db8">Unity — C# Coding Standards</a>
 
 
 Created By

@@ -6,22 +6,19 @@ namespace RMC.Templates
 
 
 	//  Class Attributes ----------------------------------
+	
+	/// <summary>
+	/// Replace with comments...
+	/// </summary>
 	[CreateAssetMenu (
 		fileName = "TemplateScriptableObject",
 		menuName = "[MyProject]/TemplateScriptableObject",
 		order = 0)]
 
-	/// <summary>
-	/// Replace with comments...
-	/// </summary>
 	public class TemplateScriptableObject : ScriptableObject
 	{
 		//  Properties ------------------------------------
-		public string SamplePublicText
-		{
-			get { return _samplePublicText; }
-			set { _samplePublicText = value; }
-		}
+		public string SamplePublicText { get { return _samplePublicText; } set { _samplePublicText = value; }}
 
 
 		//  Fields ----------------------------------------

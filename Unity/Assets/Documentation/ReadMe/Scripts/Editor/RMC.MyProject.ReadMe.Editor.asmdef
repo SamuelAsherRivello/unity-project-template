@@ -1,0 +1,19 @@
+{
+    "name": "RMC.MyProject.ReadMe.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:71cedef0a99da6f4fa432b8c4cbe9626",
+        "GUID:dc0d85c9a9837b8479a48e484bc54940"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
