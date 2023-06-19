@@ -13,6 +13,23 @@ This repo includes Project Structure Best Practices and C# Coding Standards for 
 
 ---
 
+### Videos
+
+This **Unity Project** is featured in the following YouTube video playlist.
+
+<table>
+<tr>
+<th>Unity Game Dev - In 3 Mins</th>
+</tr>
+<tr>
+<td>
+<a href="https://www.youtube.com/playlist?list=PL5domiITryHhlCKPSpiGuUt_kQg0nk3Of"><img width="500" src="https://i3.ytimg.com/vi/pXzLXNEW3bk/maxresdefault.jpg" /></a>
+</td>
+</tr>
+</table>
+
+---
+
 ### Features
 
 <img width = "400" src="./Unity/Assets/Documentation/Images/Screenshot.png" />
