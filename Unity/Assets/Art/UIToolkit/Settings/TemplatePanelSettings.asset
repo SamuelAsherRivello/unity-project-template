@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 19101, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: UnityDefaultPanelSettings
+  m_Name: TemplatePanelSettings
   m_EditorClassIdentifier: 
   themeUss: {fileID: -4733365628477956816, guid: 7eee7f129e1c0894f84ee3b478dc3e15, type: 3}
   m_TargetTexture: {fileID: 0}
