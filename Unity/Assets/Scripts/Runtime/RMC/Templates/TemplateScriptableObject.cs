@@ -12,7 +12,7 @@ namespace RMC.Templates
 	/// </summary>
 	[CreateAssetMenu (
 		fileName = "TemplateScriptableObject",
-		menuName = "[MyProject]/TemplateScriptableObject",
+		menuName = "/RMC/[MyProject]/TemplateScriptableObject",
 		order = 0)]
 
 	public class TemplateScriptableObject : ScriptableObject

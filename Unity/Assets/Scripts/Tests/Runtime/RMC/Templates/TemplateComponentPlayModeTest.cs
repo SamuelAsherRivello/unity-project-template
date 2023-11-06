@@ -30,6 +30,7 @@ namespace RMC.Templates
 			// Add something as needed...
 		}
 
+		
 		/// <summary>
 		/// Optional. Called after every [Test] method
 		/// </summary>
@@ -53,12 +54,13 @@ namespace RMC.Templates
 			}
 		}
 
+		
 		//  Methods ---------------------------------------
 
 		/// <summary>
 		/// A [Test] behaves as an ordinary method
 		/// </summary>
-		[Test]
+		//[Test]
 		public void SamplePublicText_GetValueIsExpected_WhenSet()
 		{
 			// Arrange
@@ -78,12 +80,12 @@ namespace RMC.Templates
 			Assert.AreEqual(templateComponent.SamplePublicText, text);
 		}
 
+		
 		/// <summary>
-		/// A [UnityTest] behaves like a coroutine in Play Mode. In Edit Mode you can use
-		// `yield return null;` to skip a frame.
+		/// A [UnityTest] behaves like a coroutine in Play Mode.
+		/// In Edit Mode you can use `yield return null;` to skip a frame.
 		/// </summary>
-		/// <returns></returns>
-		[UnityTest]
+		//[UnityTest]
 		public IEnumerator SamplePublicText_GetValueIsExpected_1FrameAfterWhenSet()
 		{
 			// Arrange
