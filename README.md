@@ -1,4 +1,3 @@
-
 # Unity Project Template
 
 This repo includes Project Structure Best Practices and C# Coding Standards for Unity.
@@ -10,6 +9,25 @@ This repo includes Project Structure Best Practices and C# Coding Standards for 
 1. Download the [Unity Editor](https://store.unity.com/#plans-individual)
 1. Open this repo in the Unity Editor
 1. Enjoy
+
+**Related Repos**
+| Name                  | Description                            | Educational Use | Production Use | Link |
+|-----------------------|----------------------------------------|-----------------| ---------------| -----|
+| Unity Best Practices    | Repo with best practices for Unity. It covers project structure and code standards.  | ✅  | ❌      | [link](https://github.com/SamuelAsherRivello/unity-best-practices/) |
+| Unity Project Template  | Template showcasing best practices and coding standards for Unity projects.          | ❌  | ✅       | (See below) |
+
+
+---
+
+### Table of Contents
+
+1. [Videos](#videos)
+2. [Features](#features)
+3. [Overview](#overview)
+4. [More](#more)
+    1. [A. Unity — Project Structure Best Practices](#a-unity--project-structure-best-practices)
+    2. [B. Coding Standards](#b-coding-standards)
+5. [Resources](#resources)
 
 ---
 
@@ -45,8 +63,6 @@ This project is a living template. It showcases the best practices and coding st
 * Editor Coding 
 * Unit Testing 
 
-
-
 ---
 
 # Overview
@@ -70,11 +86,9 @@ This project is a living template. It showcases the best practices and coding st
 
 ----
 
-More
-=============
+# More
 
 ### A. Unity — Project Structure Best Practices
-
 
 Employing an organized project structure is beneficial to your project and your team.
 
@@ -116,32 +130,24 @@ Benefits:
 * Minimizes Performance Pitfalls
 * Saves Money Due to Less Man Hours 
 
-Resources
-=============
+# Resources
+
 * Samuel Asher Rivello's Medium Article - <a href="https://sam-16930.medium.com/unity-project-structure-a694792cefed">Unity — Project Structure Best Practices</a>
 * Samuel Asher Rivello's Medium Article - <a href="https://sam-16930.medium.com/coding-standards-in-c-39aefee92db8">Unity — C# Coding Standards</a>
 
-
-Created By
-=============
+# Created By
 
 - Samuel Asher Rivello 
 - Over 25 years XP with game development (2024)
 - Over 11 years XP with Unity (2024)
 
-Contact
-=============
+# Contact
 
 - Twitter - <a href="https://twitter.com/srivello/">@srivello</a>
 - Git - <a href="https://github.com/SamuelAsherRivello/">Github.com/SamuelAsherRivello</a>
 - Resume & Portfolio - <a href="http://www.SamuelAsherRivello.com">SamuelAsherRivello.com</a>
 - LinkedIn - <a href="https://Linkedin.com/in/SamuelAsherRivello">Linkedin.com/in/SamuelAsherRivello</a> <--- Say Hello! :)
 
-
-License
-=============
+# License
 
 Provided as-is under MIT License | Copyright © 2024 Rivello Multimedia Consulting, LLC
-
-
-
