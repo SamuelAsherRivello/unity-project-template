@@ -13,8 +13,8 @@ This repo includes Project Structure Best Practices and C# Coding Standards for 
 **Related Repos**
 | Name                  | Description                            | Educational Use | Production Use | Link |
 |-----------------------|----------------------------------------|-----------------| ---------------| -----|
-| Unity Best Practices    | Repo with best practices for Unity. It covers project structure and code standards.  | ✔️  | ❌      | [link](https://github.com/SamuelAsherRivello/unity-best-practices/) |
-| Unity Project Template  | Template showcasing best practices and coding standards for Unity projects.          | ❌  | ✔️       | (See below) |
+| Unity Best Practices    | Repo with best practices for Unity. It covers project structure and code standards.  | ✅  | ❌      | [link](https://github.com/SamuelAsherRivello/unity-best-practices/) |
+| Unity Project Template  | Template showcasing best practices and coding standards for Unity projects.          | ❌  | ✅       | (See below) |
 
 
 ---
