@@ -1,4 +1,6 @@
+using RMC.MyProject.UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace RMC.MyProject.Scenes
 {
@@ -17,18 +19,24 @@ namespace RMC.MyProject.Scenes
 
 
         //  Properties ------------------------------------
-        public string SamplePublicText { get { return _samplePublicText; } set { _samplePublicText = value; }}
+        public HudUI HudUI { get { return _hudUI; } }
 
 
         //  Fields ----------------------------------------
         [SerializeField]
-        private string _samplePublicText;
+        private HudUI _hudUI;
 
 
         //  Unity Methods ---------------------------------
         protected void Start()
         {
             Debug.Log($"{GetType().Name}.Start()");
+            
+            // Set UI Text
+            HudUI.SetScore("Score: 000");
+            HudUI.SetLives("Lives: 003");
+            HudUI.SetInstructions("Instructions...");
+            HudUI.SetTitle(SceneManager.GetActiveScene().name);
         }
 
 

@@ -74,3 +74,4 @@ crashlytics-build.properties
 # Visual Studio
 *.vsconfig
 Unity/.idea/.idea.Unity/.idea/projectSettingsUpdater.xml
+/Unity/CodeCoverage

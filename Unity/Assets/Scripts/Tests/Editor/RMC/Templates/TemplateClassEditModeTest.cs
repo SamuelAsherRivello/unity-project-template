@@ -1,5 +1,6 @@
 using System.Collections;
 using NUnit.Framework;
+using UnityEngine.TestTools;
 
 namespace RMC.Templates
 {
@@ -41,8 +42,8 @@ namespace RMC.Templates
 		/// <summary>
 		/// A [Test] behaves as an ordinary method
 		/// </summary>
-		//[Test]
-		public void SamplePublicText_GetValueIsExpected_WhenSet()
+		[Test]
+		public void SamplePublicText_ResultIsMyText_WhenSetMyText()
 		{
 			// Arrange
 			TemplateClass templateClass = new TemplateClass();
@@ -63,10 +64,10 @@ namespace RMC.Templates
 		/// <summary>
 		/// A [UnityTest] behaves like a coroutine in Play Mode.
 		/// In Edit Mode you can use `yield return null;` to skip a frame.
-		/// </summary>
+		/// </summary>	
 		/// <returns></returns>
-		//[UnityTest]
-		public IEnumerator SamplePublicText_GetValueIsExpected_1FrameAfterWhenSet()
+		[UnityTest]
+		public IEnumerator SamplePublicText_ResultIsMyText_WhenSetMyTextAsync()
 		{
 			// Arrange
 			TemplateClass templateClass = new TemplateClass();

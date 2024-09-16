@@ -1,6 +1,8 @@
 # Unity Project Template
 
-This repo includes Project Structure Best Practices and C# Coding Standards for Unity.
+This repo represents the ideal starting point for new Unity projects.
+
+The project includes best practices for **project structure** and **C# coding standards**.
 
 <img width="600" src="./Unity/Assets/Documentation/Images/BestPractices.png" alt="Best Practices">
 
@@ -17,21 +19,29 @@ This repo includes Project Structure Best Practices and C# Coding Standards for 
 | Unity Project Template  | Template showcasing best practices and coding standards for Unity projects.          | ❌  | ✅       | (See below) |
 
 
+<BR>
+
 ---
 
-### Table of Contents
+<BR>
+
+## Table of Contents
 
 1. [Videos](#videos)
-2. [Features](#features)
-3. [Overview](#overview)
-4. [More](#more)
-    1. [A. Unity — Project Structure Best Practices](#a-unity--project-structure-best-practices)
-    2. [B. Coding Standards](#b-coding-standards)
-5. [Resources](#resources)
+2. [Overview](#features)
+3. [Best Practices](#best-practices)
+    1. [Project Structure](#project-structure)
+    2. [Coding Standards](#coding-standards)
+4. [Resources](#resources)
+5. [Credits](#credits)
+
+<BR>
 
 ---
 
-### Videos
+<BR>
+
+## Videos
 
 This **Unity Project** is featured in the following YouTube video playlist.
 
@@ -46,26 +56,36 @@ This **Unity Project** is featured in the following YouTube video playlist.
 </tr>
 </table>
 
+<BR>
+
 ---
+
+<BR>
+
+## Overview
 
 ### Features
 
-<img width = "400" src="./Unity/Assets/Documentation/Images/Screenshot.png" />
-
 This project is a living template. It showcases the best practices and coding standards for many common workflows.
 
-**Includes Templates For** ...
+<img width = "400" src="./Unity/Assets/Documentation/Images/Screenshot.png" />
+
+**Scope Includes:** 
 * Git Repo - Structure, .gitignore, ReadMe.md
-* Scene Hiearchy Window - Structure
+* Scene Hierarchy Window - Structure
 * Project Window - Structure
-* Inspector Window - ReadMe.asset
-* Runtime Coding
-* Editor Coding 
-* Unit Testing 
+* Inspector Window - `ReadMe.asset`
+* Scripting - Runtime
+* Scripting - Editor
+* Unit Testing - Runtime
+* Unit Testing - Editor
+* UI Toolkit
+* Universal Render Pipeline (URP)
+* Post Processing
+* Anti-Aliasing
 
----
 
-# Overview
+### Structure
 
 **Documentation**
 * `ReadMe.md` - The primary documentation for this repo
@@ -74,7 +94,7 @@ This project is a living template. It showcases the best practices and coding st
 **Configuration**
 * `Unity Target` - [Standalone MAC/PC](https://support.unity.com/hc/en-us/articles/206336795-What-platforms-are-supported-by-Unity-)
 * `Unity Version` - Use this [Version](./Unity/ProjectSettings/ProjectVersion.txt)
-* `Unity Rendering` - [Standard Render Pipeline (SRP)](https://docs.unity3d.com/Manual/built-in-render-pipeline.html)
+* `Unity Rendering` - [Universal Render Pipeline (URP)](https://docs.unity3d.com/Manual/universal-render-pipeline.html)
 * `Unity Aspect Ratio` - [Game View 10x16](https://docs.unity3d.com/Manual/GameView.html)
 
 **Structure**
@@ -84,15 +104,21 @@ This project is a living template. It showcases the best practices and coding st
 **Dependencies**
 * `Various` - Already included via [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui.html) as this [Version](./Unity/Packages/manifest.json)
 
-----
+<BR>
 
-# More
+---
 
-### A. Unity — Project Structure Best Practices
+<BR>
+
+## Best Practices
+
+### Project Structure
 
 Employing an organized project structure is beneficial to your project and your team.
 
-Scope:
+See the [./Unity/Assets/](./Unity/Assets/) folder for more info.
+
+Scope Includes:
 * Folder Structure
 * Folder Naming
 * File Naming
@@ -103,15 +129,15 @@ Benefits:
 * Maintenance — Consistent project structure will aid readability. Readability helps new and existing programmers revisit the code base for fixes and improvements.
 * Communication — Developers more implicitly understand each other in written and verbal communication.
 
-### B. Coding Standards
+### Coding Standards
 
 Coding standards define a programming style. 
 
-See the repo's <a href="https://github.com/SamuelAsherRivello/unity-project-template/tree/master/Unity/Assets/Scripts/Runtime/RMC/Templates">C# Templates</a> for more info.
+See the <a href="./Unity/Assets/Scripts/Runtime/RMC/Templates">./Unity/.../Templates/</a> folder for more info.
 
 Employing organized coding standards is beneficial to your project and your team.
 
-Scope:
+Scope Includes:
 
 * Naming Conventions
 * File Naming and Organization
@@ -130,24 +156,41 @@ Benefits:
 * Minimizes Performance Pitfalls
 * Saves Money Due to Less Man Hours 
 
-# Resources
+## Resources
 
-* Samuel Asher Rivello's Medium Article - <a href="https://sam-16930.medium.com/unity-project-structure-a694792cefed">Unity — Project Structure Best Practices</a>
-* Samuel Asher Rivello's Medium Article - <a href="https://sam-16930.medium.com/coding-standards-in-c-39aefee92db8">Unity — C# Coding Standards</a>
+Here are more articles from Samuel Asher Rivello.
 
-# Created By
+**Portfolio**
+* [SamuelAsherRivello.com/best-practices](https://www.SamuelAsherRivello.com/best-practices)
 
-- Samuel Asher Rivello 
+**Medium**
+* [Best Practices — 1 — Unity Project Structure](https://samuel-asher-rivello.medium.com/unity-project-structure-a694792cefed)
+* [Best Practices — 2 — Unity C# Coding Standards](https://samuel-asher-rivello.medium.com/coding-standards-in-c-39aefee92db8)
+* [Best Practices — 3 — Unity Overview](https://samuel-asher-rivello.medium.com/best-practices-3-unity-8abcce214ddc)
+* [Best Practices — 4 — MVC Architecture For Unity](https://samuel-asher-rivello.medium.com/unleashing-the-power-of-mvc-architecture-in-unity-a-journey-of-structured-game-development-492ef9c53817)
+* [Best Practices — 5 — Unit Testing For Unity](https://samuel-asher-rivello.medium.com/unity-testing-for-unity-elevating-your-game-development-skills-eb76fc0bbea3)
+
+<BR>
+
+---
+
+<BR>
+
+## Credits
+
+**Created By**
+
+- Samuel Asher Rivello
 - Over 25 years XP with game development (2024)
 - Over 11 years XP with Unity (2024)
 
-# Contact
+**Contact**
 
 - Twitter - <a href="https://twitter.com/srivello/">@srivello</a>
 - Git - <a href="https://github.com/SamuelAsherRivello/">Github.com/SamuelAsherRivello</a>
 - Resume & Portfolio - <a href="http://www.SamuelAsherRivello.com">SamuelAsherRivello.com</a>
 - LinkedIn - <a href="https://Linkedin.com/in/SamuelAsherRivello">Linkedin.com/in/SamuelAsherRivello</a> <--- Say Hello! :)
 
-# License
+**License**
 
 Provided as-is under MIT License | Copyright © 2024 Rivello Multimedia Consulting, LLC

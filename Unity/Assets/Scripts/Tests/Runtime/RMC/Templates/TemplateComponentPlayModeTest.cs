@@ -60,8 +60,8 @@ namespace RMC.Templates
 		/// <summary>
 		/// A [Test] behaves as an ordinary method
 		/// </summary>
-		//[Test]
-		public void SamplePublicText_GetValueIsExpected_WhenSet()
+		[Test]
+		public void SamplePublicText_ResultIsMyText_WhenSetMyText()
 		{
 			// Arrange
 			_parentGameObject = new GameObject();
@@ -85,8 +85,8 @@ namespace RMC.Templates
 		/// A [UnityTest] behaves like a coroutine in Play Mode.
 		/// In Edit Mode you can use `yield return null;` to skip a frame.
 		/// </summary>
-		//[UnityTest]
-		public IEnumerator SamplePublicText_GetValueIsExpected_1FrameAfterWhenSet()
+		[UnityTest]
+		public IEnumerator SamplePublicText_ResultIsMyText_WhenSetMyTextAsync()
 		{
 			// Arrange
 			_parentGameObject = new GameObject();
