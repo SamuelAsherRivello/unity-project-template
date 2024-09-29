@@ -1,12 +1,16 @@
 # Unity Project Template
 
+<img width="600" src="./Unity/Assets/Documentation/Images/BestPractices.png" alt="Best Practices">
+
+<BR>
+
 This repo represents the ideal starting point for new Unity projects.
 
 The project includes best practices for **project structure** and **C# coding standards**.
 
 <BR>
 
-**Getting Started**
+**Getting Started: Steps**
 1. Download this repo (*.zip or *.git)
 1. Download the [Unity Editor](https://store.unity.com/#plans-individual)
 1. Open this repo in the Unity Editor
@@ -14,29 +18,45 @@ The project includes best practices for **project structure** and **C# coding st
 
 <BR>
 
-<img width="600" src="./Unity/Assets/Documentation/Images/BestPractices.png" alt="Best Practices">
+**Getting Started: Video**
+
+<a href="https://www.youtube.com/playlist?list=PL5domiITryHhlCKPSpiGuUt_kQg0nk3Of"><img width="600" src="https://i3.ytimg.com/vi/pXzLXNEW3bk/maxresdefault.jpg" /></a>
+
+<BR>
+
+## Table of Contents
+
+1. [About](#about)
+1. [Overview](#overview)
+1. [Best Practices](#best-practices)
+    * [Project Structure](#project-structure)
+    * [Coding Standards](#coding-standards)
+1. [Resources](#resources)
+1. [Credits](#credits)
+
 
 
 <BR>
 
-## Comparison
+## About
 
 ### Template Basics
 
 This template contains the following:
 
-| Name                                                                                             | Description                                                                           |
-|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
-| [Cinemachine](https://docs.unity3d.com/Packages/com.unity.cinemachine@latest)                    | Advanced camera control for dynamic, in-game cinematography and cutscenes.            |
-| [Universal Render Pipeline (URP)](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@latest) | A scalable rendering solution optimized for performance and visual quality.          |
-| [ProBuilder](https://docs.unity3d.com/Packages/com.unity.probuilder@latest)                      | 3D modeling and level design directly within the Unity Editor.                        |
-| [Post-Processing Stack](https://docs.unity3d.com/Packages/com.unity.postprocessing@latest)       | Advanced visual effects like color grading, bloom, and ambient occlusion.             |
-| [Physics (2D and 3D)](https://docs.unity3d.com/Manual/PhysicsSection.html)                       | Realistic collision detection and response, rigidbody dynamics, and joints.           |
-| [Best Practices](https://www.samuelasherrivello.com/best-practices)                              | Proven approaches for Unity project structure, asset organization, and workflow.      |
-| [Coding Standards](https://www.samuelasherrivello.com/best-practices)                            | Naming conventions, file organization, and formatting for Unity C# development.       |
-| [Unit Testing](https://docs.unity3d.com/Packages/com.unity.test-framework@latest)                | Verify the correctness of code with automated tests, ensuring stability and quality.  |
-| [Code Coverage](https://docs.unity3d.com/Packages/com.unity.test-framework.codecoverage@latest)  | Measure the percentage of code executed during testing to identify untested areas.    |
-| [Text Mesh Pro](https://docs.unity3d.com/Packages/com.unity.textmeshpro@latest)                  | Advanced text rendering and formatting options for high-quality text in Unity.        |
+| Name                                                                                             | Description                                               |
+|-------------------------------------------------------------------------------------------------|-----------------------------------------------------------|
+| [Assembly Definitions](https://docs.unity3d.com/Manual/ScriptCompilationAssemblyDefinitionFiles.html) | Organize and optimize script compilation.                 |
+| [Best Practices: Coding Standards](https://www.samuelasherrivello.com/best-practices)            | Guidelines for consistent code style and format.          |
+| [Best Practices: Project Structure](https://www.samuelasherrivello.com/best-practices)           | Recommended project structure and organization.           |
+| [Cinemachine](https://docs.unity3d.com/Packages/com.unity.cinemachine@latest)                    | Advanced camera system for dynamic shots.                 |
+| [Physics](https://docs.unity3d.com/Manual/PhysicsSection.html)                                   | Physics simulation for 2D and 3D games.                   |
+| [ProBuilder](https://docs.unity3d.com/Packages/com.unity.probuilder@latest)                      | 3D modeling and level design toolset.                     |
+| [Rendering: Post-Processing](https://docs.unity3d.com/Packages/com.unity.postprocessing@latest)  | Visual effects like color grading and bloom.              |
+| [Rendering: URP](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@latest)  | Efficient rendering pipeline for various platforms.       |
+| [Text Mesh Pro](https://docs.unity3d.com/Packages/com.unity.textmeshpro@latest)                  | High-quality text rendering and formatting.               |
+| [Unit Testing](https://docs.unity3d.com/Packages/com.unity.test-framework@latest)                | Automated tests to verify code stability.                 |
+| [Unit Testing: Code Coverage](https://docs.unity3d.com/Packages/com.unity.test-framework.codecoverage@latest) | Measure code tested during unit testing.                  |
 
 ### More Templates
 
@@ -54,52 +74,9 @@ If you want these template basics **plus** additional features, check out the fo
 
 
 
-
-
+<BR>
 <BR>
 
-<BR>
-
----
-
-<BR>
-
-## Table of Contents
-
-1. [Videos](#videos)
-2. [Overview](#features)
-3. [Best Practices](#best-practices)
-    1. [Project Structure](#project-structure)
-    2. [Coding Standards](#coding-standards)
-4. [Resources](#resources)
-5. [Credits](#credits)
-
-<BR>
-
----
-
-<BR>
-
-## Videos
-
-This **Unity Project** is featured in the following YouTube video playlist.
-
-<table>
-<tr>
-<th>Unity Game Dev - In 3 Mins</th>
-</tr>
-<tr>
-<td>
-<a href="https://www.youtube.com/playlist?list=PL5domiITryHhlCKPSpiGuUt_kQg0nk3Of"><img width="500" src="https://i3.ytimg.com/vi/pXzLXNEW3bk/maxresdefault.jpg" /></a>
-</td>
-</tr>
-</table>
-
-<BR>
-
----
-
-<BR>
 
 ## Overview
 
@@ -107,22 +84,7 @@ This **Unity Project** is featured in the following YouTube video playlist.
 
 This project is a living template. It showcases the best practices and coding standards for many common workflows.
 
-<img width = "400" src="./Unity/Assets/Documentation/Images/Screenshot.png" />
-
-**Scope Includes:** 
-* Git Repo - Structure, .gitignore, ReadMe.md
-* Scene Hierarchy Window - Structure
-* Project Window - Structure
-* Inspector Window - `ReadMe.asset`
-* Scripting - Runtime
-* Scripting - Editor
-* Unit Testing - Runtime
-* Unit Testing - Editor
-* UI Toolkit
-* Universal Render Pipeline (URP)
-* Post Processing
-* Anti-Aliasing
-
+<img width = "600" src="./Unity/Assets/Documentation/Images/Screenshot.png" />
 
 ### Structure
 
@@ -144,9 +106,6 @@ This project is a living template. It showcases the best practices and coding st
 * `Various` - Already included via [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui.html) as this [Version](./Unity/Packages/manifest.json)
 
 <BR>
-
----
-
 <BR>
 
 ## Best Practices
@@ -155,7 +114,7 @@ This project is a living template. It showcases the best practices and coding st
 
 Employing an organized project structure is beneficial to your project and your team.
 
-See the [./Unity/Assets/](./Unity/Assets/) folder for more info.
+See the <a href="./Unity/Assets/">Unity/Assets/</a> folder for more info.
 
 Scope Includes:
 * Folder Structure
@@ -172,7 +131,7 @@ Benefits:
 
 Coding standards define a programming style. 
 
-See the <a href="./Unity/Assets/Scripts/Runtime/RMC/Templates">./Unity/.../Templates/</a> folder for more info.
+See the <a href="./Unity/Assets/Scripts/Runtime/RMC/Templates">Unity/.../Templates/</a> folder for more info.
 
 Employing organized coding standards is beneficial to your project and your team.
 
@@ -195,6 +154,9 @@ Benefits:
 * Minimizes Performance Pitfalls
 * Saves Money Due to Less Man Hours 
 
+<BR>
+<BR>
+
 ## Resources
 
 Here are more articles from Samuel Asher Rivello.
@@ -210,9 +172,6 @@ Here are more articles from Samuel Asher Rivello.
 * [Best Practices — 5 — Unit Testing For Unity](https://samuel-asher-rivello.medium.com/unity-testing-for-unity-elevating-your-game-development-skills-eb76fc0bbea3)
 
 <BR>
-
----
-
 <BR>
 
 ## Credits

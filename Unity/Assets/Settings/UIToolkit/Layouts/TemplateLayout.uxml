@@ -2,10 +2,10 @@
     <Style src="project://database/Assets/Settings/UIToolkit/Styles/TemplateStyles.uss?fileID=7433441132597879392&amp;guid=6ebbbe798c96bf344b8b9360316b9108&amp;type=3#TemplateStyles" />
     <ui:VisualElement name="Screen" style="flex-grow: 1;">
         <ui:VisualElement name="Panel" class="panel" style="flex-grow: 1;">
-            <ui:Label tabindex="-1" text="Lives: 003" parse-escape-sequences="true" display-tooltip-when-elided="true" name="UpperLeftLabel" class="label" style="position: absolute; left: 0; top: 0;" />
-            <ui:Label tabindex="-1" text="Score: 000" parse-escape-sequences="true" display-tooltip-when-elided="true" name="UpperRightLabel" class="label" style="position: absolute; right: 0;" />
-            <ui:Label tabindex="-1" text="Instructions..." parse-escape-sequences="true" display-tooltip-when-elided="true" name="LowerLeftLabel" class="label" style="position: absolute; left: 0; bottom: 0;" />
-            <ui:Label tabindex="-1" text="Scene01_Intro" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LowerRightLabel" class="label" style="right: 0; bottom: 0; position: absolute;" />
+            <ui:Label tabindex="-1" text="Lives: 003" parse-escape-sequences="true" display-tooltip-when-elided="true" name="UpperLeftLabel" style="position: absolute; left: 0; top: 0;" />
+            <ui:Label tabindex="-1" text="Score: 000" parse-escape-sequences="true" display-tooltip-when-elided="true" name="UpperRightLabel" style="position: absolute; right: 0;" />
+            <ui:Label tabindex="-1" text="Instructions..." parse-escape-sequences="true" display-tooltip-when-elided="true" name="LowerLeftLabel" style="position: absolute; left: 0; bottom: 0;" />
+            <ui:Label tabindex="-1" text="Scene01_Intro" parse-escape-sequences="true" display-tooltip-when-elided="true" name="LowerRightLabel" style="right: 0; bottom: 0; position: absolute;" />
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

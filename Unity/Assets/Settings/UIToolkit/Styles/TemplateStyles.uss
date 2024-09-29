@@ -1,7 +1,7 @@
 VisualElement {
 }
 
-.label {
+.unity-text-element {
     color: rgb(255, 255, 255);
     font-size: 50px;
     -unity-text-outline-color: rgba(255, 255, 255, 0);

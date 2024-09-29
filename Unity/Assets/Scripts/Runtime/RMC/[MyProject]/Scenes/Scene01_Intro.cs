@@ -5,20 +5,11 @@ using UnityEngine.SceneManagement;
 
 namespace RMC.MyProject.Scenes
 {
-    //  Namespace Properties ------------------------------
-
-
-    //  Class Attributes ----------------------------------
-
-
     /// <summary>
-    /// Replace with comments...
+    /// Main entry point for the Scene.
     /// </summary>
     public class Scene01_Intro : MonoBehaviour
     {
-        //  Events ----------------------------------------
-
-
         //  Properties ------------------------------------
         public HudUI HudUI { get { return _hudUI; } }
 
@@ -31,39 +22,47 @@ namespace RMC.MyProject.Scenes
         [Header("Player")]
         [SerializeField]
         private Rigidbody _playerRigidBody;
-
-        [SerializeField]
-        private float _moveSpeed = 3;
-
-        [SerializeField] 
-        private float _jumpSpeed = 5;
-
         
-        // 2. These variables are to hold the Action references
-        InputAction _moveInputAction;
-        InputAction _jumpInputAction;
-        InputAction _resetInputAction;
+        [SerializeField]
+        private float _playerMoveSpeed = 4;
+        
+        [SerializeField]
+        private float _playerJumpSpeed = 5;
+
+        // Input
+        private InputAction _moveInputAction;
+        private InputAction _jumpInputAction;
+        private InputAction _resetInputAction;
         
         //  Unity Methods ---------------------------------
         protected void Start()
         {
             Debug.Log($"{GetType().Name}.Start()");
             
-            
             // Input
             _moveInputAction = InputSystem.actions.FindAction("Move");
             _jumpInputAction = InputSystem.actions.FindAction("Jump");
             _resetInputAction = InputSystem.actions.FindAction("Reset");
             
-            // Set UI Text
+            // UI
             HudUI.SetScore("Score: 000");
             HudUI.SetLives("Lives: 003");
-            HudUI.SetInstructions("Instructions: Arrows, Spacebar, R");
+            HudUI.SetInstructions("Instructions: WASD/Arrows, Spacebar, R");
             HudUI.SetTitle(SceneManager.GetActiveScene().name);
+            
         }
 
 
         protected void Update()
+        {
+            HandleUserInput();
+            CheckPlayerFalling();
+        }
+
+
+
+        //  Methods ---------------------------------------
+        private void HandleUserInput()
         {
             Vector2 moveInputVector2 = _moveInputAction.ReadValue<Vector2>();
             
@@ -77,13 +76,13 @@ namespace RMC.MyProject.Scenes
                 );
                 
                 // Move with arrow keys / WASD / gamepad
-                _playerRigidBody.AddForce(moveInputVector3 * _moveSpeed, ForceMode.Force);
+                _playerRigidBody.AddForce(moveInputVector3 * _playerMoveSpeed, ForceMode.Acceleration);
             }
 
             if (_jumpInputAction.WasPerformedThisFrame())
             {
                 // Jump with spacebar / gamepad
-                _playerRigidBody.AddForce(Vector3.up * _jumpSpeed, ForceMode.Impulse);
+                _playerRigidBody.AddForce(Vector3.up * _playerJumpSpeed, ForceMode.Impulse);
             }
             
             if (_resetInputAction.IsPressed())
@@ -91,21 +90,19 @@ namespace RMC.MyProject.Scenes
                 // Reload the current scene with R key 
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
-            
+
         }
 
-
-        //  Methods ---------------------------------------
-        public string SamplePublicMethod(string message)
+        
+        private void CheckPlayerFalling()
         {
-            return message;
+            if (_playerRigidBody.transform.position.y < -5)
+            {
+                // Reload the current scene if character falls off Floor
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
-
 
         //  Event Handlers --------------------------------
-        public void Target_OnCompleted(string message)
-        {
-
-        }
     }
 }

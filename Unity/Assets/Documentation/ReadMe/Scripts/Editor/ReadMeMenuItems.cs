@@ -8,8 +8,8 @@ namespace RMC.MyProject.ReadMe
 		//  Fields ----------------------------------------
 		public const string PathMenuItemWindowCompanyProject = "Window/" + CompanyName + "/" + ProjectName;
 		public const string CompanyName = "RMC";
-		public const string ProjectName = "My Project";
-		public const int PriorityMenuItem_Examples = 1;
+		public const string ProjectName = "[MyProject]";
+		public const int PriorityMenuItem_Examples = -1000;
         
 		//  Fields ----------------------------------------
 		

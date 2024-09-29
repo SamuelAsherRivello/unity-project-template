@@ -51,4 +51,13 @@ MonoBehaviour:
     PingObjectGuid: 5a22eb9ce84e5194ca5658315e96758d
     MenuItemName: 
     MenuItemPath: 
+  - TextHeading: Customize ReadMe
+    TextSubheading: 
+    TextBody: Open this Unity Inspector Window as 'Debug' to edit.
+    LinkName: 
+    LinkUrl: 
+    PingObjectName: 
+    PingObjectGuid: 
+    MenuItemName: 
+    MenuItemPath: 
   HasLoadedLayout: 0
