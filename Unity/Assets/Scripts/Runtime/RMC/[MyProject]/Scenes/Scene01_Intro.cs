@@ -24,9 +24,11 @@ namespace RMC.MyProject.Scenes
 
 
         //  Fields ----------------------------------------
+        [Header("UI")]
         [SerializeField]
         private HudUI _hudUI;
 
+        [Header("Player")]
         [SerializeField]
         private Rigidbody _playerRigidBody;
 

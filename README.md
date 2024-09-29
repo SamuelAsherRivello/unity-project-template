@@ -4,7 +4,7 @@ This repo represents the ideal starting point for new Unity projects.
 
 The project includes best practices for **project structure** and **C# coding standards**.
 
-<img width="600" src="./Unity/Assets/Documentation/Images/BestPractices.png" alt="Best Practices">
+<BR>
 
 **Getting Started**
 1. Download this repo (*.zip or *.git)
@@ -12,12 +12,51 @@ The project includes best practices for **project structure** and **C# coding st
 1. Open this repo in the Unity Editor
 1. Enjoy
 
-**Related Repos**
-| Name                  | Description                            | Educational Use | Production Use | Link |
-|-----------------------|----------------------------------------|-----------------| ---------------| -----|
-| Unity Best Practices    | Repo with best practices for Unity. It covers project structure and code standards.  | ✅  | ❌      | [link](https://github.com/SamuelAsherRivello/unity-best-practices/) |
-| Unity Project Template  | Template showcasing best practices and coding standards for Unity projects.          | ❌  | ✅       | (See below) |
+<BR>
 
+<img width="600" src="./Unity/Assets/Documentation/Images/BestPractices.png" alt="Best Practices">
+
+
+<BR>
+
+## Comparison
+
+### Template Basics
+
+This template contains the following:
+
+| Name                                                                                             | Description                                                                           |
+|-------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
+| [Cinemachine](https://docs.unity3d.com/Packages/com.unity.cinemachine@latest)                    | Advanced camera control for dynamic, in-game cinematography and cutscenes.            |
+| [Universal Render Pipeline (URP)](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@latest) | A scalable rendering solution optimized for performance and visual quality.          |
+| [ProBuilder](https://docs.unity3d.com/Packages/com.unity.probuilder@latest)                      | 3D modeling and level design directly within the Unity Editor.                        |
+| [Post-Processing Stack](https://docs.unity3d.com/Packages/com.unity.postprocessing@latest)       | Advanced visual effects like color grading, bloom, and ambient occlusion.             |
+| [Physics (2D and 3D)](https://docs.unity3d.com/Manual/PhysicsSection.html)                       | Realistic collision detection and response, rigidbody dynamics, and joints.           |
+| [Best Practices](https://www.samuelasherrivello.com/best-practices)                              | Proven approaches for Unity project structure, asset organization, and workflow.      |
+| [Coding Standards](https://www.samuelasherrivello.com/best-practices)                            | Naming conventions, file organization, and formatting for Unity C# development.       |
+| [Unit Testing](https://docs.unity3d.com/Packages/com.unity.test-framework@latest)                | Verify the correctness of code with automated tests, ensuring stability and quality.  |
+| [Code Coverage](https://docs.unity3d.com/Packages/com.unity.test-framework.codecoverage@latest)  | Measure the percentage of code executed during testing to identify untested areas.    |
+| [Text Mesh Pro](https://docs.unity3d.com/Packages/com.unity.textmeshpro@latest)                  | Advanced text rendering and formatting options for high-quality text in Unity.        |
+
+### More Templates
+
+If you want these template basics **plus** additional features, check out the following:
+
+| Repository                                                                                         | Template Basics | AR  | VR  | Multiplayer | WebGPU | DOTS |
+|---------------------------------------------------------------------------------------------------|-----------------|-----|-----|-------------|--------|------|
+| [unity-project-template](https://github.com/SamuelAsherRivello/unity-project-template)             | ✅              | ❌  | ❌  | ❌          | ❌     | ❌   |
+| [unity-project-template-ar](https://github.com/SamuelAsherRivello/unity-project-template-ar)       | ✅              | ✅  | ❌  | ❌          | ❌     | ❌   |
+| [unity-project-template-vr](https://github.com/SamuelAsherRivello/unity-project-template-vr)       | ✅              | ❌  | ✅  | ❌          | ❌     | ❌   |
+| [unity-project-template-coherence-multiplayer](https://github.com/SamuelAsherRivello/unity-project-template-coherence-multiplayer) | ✅              | ❌  | ❌  | ✅          | ❌     | ❌   |
+| [unity-multiplayer-ngo-2d-playground](https://github.com/SamuelAsherRivello/unity-multiplayer-ngo-2d-playground) | ✅              | ❌  | ❌  | ✅          | ❌     | ❌   |
+| [unity-project-template-webgpu](https://github.com/SamuelAsherRivello/unity-project-template-webgpu) | ✅              | ❌  | ❌  | ❌          | ✅     | ❌   |
+| [rmc-dots-examples](https://github.com/SamuelAsherRivello/rmc-dots-examples)                       | ✅              | ❌  | ❌  | ❌          | ❌     | ✅   |
+
+
+
+
+
+<BR>
 
 <BR>
 

@@ -8,7 +8,8 @@ VisualElement {
     text-shadow: 2px 2px 2px rgb(0, 0, 0);
     -unity-font-style: normal;
     -unity-font: initial;
-    -unity-font-definition: url("project://database/Assets/Art/Fonts/Arial_SDF.asset?fileID=11400000&guid=842c5f3696fbc2648ad656c14fe7acb8&type=2#Arial_SDF");
+    -unity-font-definition: url("project://database/Assets/Art/Fonts/BEBASNEUE-REGULAR%20SDF.asset?fileID=11400000&guid=bf70d719a007ed94fb0d1a6fe3a3f892&type=2#BEBASNEUE-REGULAR SDF");
+    letter-spacing: 3px;
 }
 
 .panel {
