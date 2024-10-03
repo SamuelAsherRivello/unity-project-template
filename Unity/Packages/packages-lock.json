@@ -1,8 +1,32 @@
 {
   "dependencies": {
+    "com.rmc.rmc-core": {
+      "version": "1.6.7",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.rmc.rmc-newtonsoft.json-for-unity": "10.0.302",
+        "com.rmc.rmc-unitask": "2.3.32"
+      },
+      "url": "https://registry.npmjs.org"
+    },
+    "com.rmc.rmc-newtonsoft.json-for-unity": {
+      "version": "10.0.302",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://registry.npmjs.org"
+    },
     "com.rmc.rmc-readme": {
       "version": "1.2.2",
       "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://registry.npmjs.org"
+    },
+    "com.rmc.rmc-unitask": {
+      "version": "2.3.32",
+      "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://registry.npmjs.org"

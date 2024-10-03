@@ -53,7 +53,8 @@ MonoBehaviour:
     MenuItemPath: 
   - TextHeading: Customize ReadMe
     TextSubheading: 
-    TextBody: Open this Unity Inspector Window as 'Debug' to edit.
+    TextBody: Update this window to describe your next project. \nOpen this Unity
+      Inspector Window as 'Debug' to edit.
     LinkName: 
     LinkUrl: 
     PingObjectName: 

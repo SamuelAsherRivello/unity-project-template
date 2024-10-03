@@ -1,3 +1,4 @@
+using RMC.Core.Audio;
 using RMC.MyProject.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -35,6 +36,10 @@ namespace RMC.MyProject.Scenes
         private InputAction _resetInputAction;
         
         //  Unity Methods ---------------------------------
+        
+        /// <summary>
+        /// Runs once per Scene. Use for initialization
+        /// </summary>
         protected void Start()
         {
             Debug.Log($"{GetType().Name}.Start()");
@@ -52,16 +57,22 @@ namespace RMC.MyProject.Scenes
             
         }
 
-
+        
+        /// <summary>
+        /// Runs every frame. Use for input/physics/gameplay
+        /// </summary>
         protected void Update()
         {
             HandleUserInput();
             CheckPlayerFalling();
         }
 
-
-
+        
         //  Methods ---------------------------------------
+        
+        /// <summary>
+        /// Take user input from keyboard/mouse/gamepad
+        /// </summary>
         private void HandleUserInput()
         {
             Vector2 moveInputVector2 = _moveInputAction.ReadValue<Vector2>();
@@ -77,12 +88,18 @@ namespace RMC.MyProject.Scenes
                 
                 // Move with arrow keys / WASD / gamepad
                 _playerRigidBody.AddForce(moveInputVector3 * _playerMoveSpeed, ForceMode.Acceleration);
+                
+                if (_moveInputAction.WasPerformedThisFrame())
+                {
+                    PlayAudioClip("Click01");
+                }
             }
 
             if (_jumpInputAction.WasPerformedThisFrame())
             {
                 // Jump with spacebar / gamepad
                 _playerRigidBody.AddForce(Vector3.up * _playerJumpSpeed, ForceMode.Impulse);
+                PlayAudioClip("ItemUpdate01");
             }
             
             if (_resetInputAction.IsPressed())
@@ -93,7 +110,9 @@ namespace RMC.MyProject.Scenes
 
         }
 
-        
+        /// <summary>
+        /// Check for out of bounds
+        /// </summary>
         private void CheckPlayerFalling()
         {
             if (_playerRigidBody.transform.position.y < -5)
@@ -101,6 +120,16 @@ namespace RMC.MyProject.Scenes
                 // Reload the current scene if character falls off Floor
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
+        }
+        
+
+        /// <summary>
+        /// Play system using the AudioManager imported via https://github.com/SamuelAsherRivello/rmc-core/
+        /// </summary>
+        /// <param name="audioClipName">Must match AudioClip name within Assets/Settings/Audio/AudioManagerConfiguration.asset</param>
+        private void PlayAudioClip(string audioClipName)
+        {
+            AudioManager.Instance.PlayAudioClip(audioClipName);
         }
 
         //  Event Handlers --------------------------------
