@@ -191,4 +191,4 @@ Here are more articles from Samuel Asher Rivello.
 
 **License**
 
-Provided as-is under MIT License | Copyright © 2024 Rivello Multimedia Consulting, LLC
+Provided as-is under <a href="./LICENSE">MIT License</a> | Copyright ™ & © 2006 - 2024 Rivello Multimedia Consulting, LLC
