@@ -1,8 +1,18 @@
 {
   "dependencies": {
-    "com.rmc.rmc-core": {
-      "version": "1.6.7",
+    "com.rmc.rmc-audio": {
+      "version": "1.8.1",
       "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.rmc.rmc-readme": "1.2.1",
+        "com.rmc.rmc-core": "1.8.0"
+      },
+      "url": "https://registry.npmjs.org"
+    },
+    "com.rmc.rmc-core": {
+      "version": "1.8.0",
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.rmc.rmc-newtonsoft.json-for-unity": "10.0.302",
@@ -222,13 +232,6 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
-    },
-    "com.virtualmaker.buildalon": {
-      "version": "1.0.4",
-      "depth": 0,
-      "source": "registry",
-      "dependencies": {},
-      "url": "https://package.openupm.com"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
