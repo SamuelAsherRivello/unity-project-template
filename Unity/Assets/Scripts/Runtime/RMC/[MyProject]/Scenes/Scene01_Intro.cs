@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using RMC.Audio;
 using RMC.MyProject.UI;
 using UnityEngine;
@@ -14,7 +15,49 @@ namespace RMC.MyProject.Scenes
         //  Properties ------------------------------------
         public HudUI HudUI { get { return _hudUI; } }
 
+        public int Score 
+        {
+            get
+            {
+                return _score;
+            }
+            set
+            {
+                _score = value;
+                HudUI.SetScore($"Score: {_score:000}/{ScoreMax:000}");
+            }
+        }
+        
+        public int Lives 
+        {
+            get
+            {
+                return _lives;
+            }
+            set
+            {
+                _lives = value;
+                HudUI.SetLives($"Lives: {_lives:000}/{LivesMax:000}");
+            }
+        }
 
+        public bool PlayerInputIsEnabled 
+        {
+            get
+            {
+                return _playerInputIsEnabled;
+            }
+            set
+            {
+                _playerInputIsEnabled = value;
+                
+                // Freeze player in position when no input
+                _playerRigidBody.isKinematic = !_playerInputIsEnabled;
+            }
+        }
+
+        
+            
         //  Fields ----------------------------------------
         [Header("UI")]
         [SerializeField]
@@ -31,9 +74,23 @@ namespace RMC.MyProject.Scenes
         private float _playerJumpSpeed = 5;
 
         // Input
-        private InputAction _moveInputAction;
-        private InputAction _jumpInputAction;
-        private InputAction _resetInputAction;
+        private InputAction _playerMoveInputAction;
+        private InputAction _playerJumpInputAction;
+        private InputAction _gameResetInputAction;
+        
+        // Data
+        private int _score = 0;
+        private int _lives = 0;
+        private const int ScoreMax = 5;
+        private const int LivesMax = 3;
+        private bool _playerInputIsEnabled = true;
+        
+        // Audio
+        private const string PlayerResetAudioClip = "ItemRead01";
+        private const string GameWinAudioClip = "Music_Win01";
+        private const string PlayerJumpAudioClip = "ItemUpdate01";
+        private const string PlayerMoveAudioClip = "Click01";
+        
         
         //  Unity Methods ---------------------------------
         
@@ -45,13 +102,14 @@ namespace RMC.MyProject.Scenes
             Debug.Log($"{GetType().Name}.Start()");
             
             // Input
-            _moveInputAction = InputSystem.actions.FindAction("Move");
-            _jumpInputAction = InputSystem.actions.FindAction("Jump");
-            _resetInputAction = InputSystem.actions.FindAction("Reset");
+            _playerMoveInputAction = InputSystem.actions.FindAction("Move");
+            _playerJumpInputAction = InputSystem.actions.FindAction("Jump");
+            _gameResetInputAction = InputSystem.actions.FindAction("Reset");
+            PlayerInputIsEnabled = true;
             
             // UI
-            HudUI.SetScore("Score: 000");
-            HudUI.SetLives("Lives: 003");
+            Score = 0;
+            Lives = LivesMax;
             HudUI.SetInstructions("Instructions: WASD/Arrows, Spacebar, R");
             HudUI.SetTitle(SceneManager.GetActiveScene().name);
             
@@ -63,6 +121,11 @@ namespace RMC.MyProject.Scenes
         /// </summary>
         protected void Update()
         {
+            if (!PlayerInputIsEnabled)
+            {
+                return;
+            }
+            
             HandleUserInput();
             CheckPlayerFalling();
         }
@@ -73,9 +136,9 @@ namespace RMC.MyProject.Scenes
         /// <summary>
         /// Take user input from keyboard/mouse/gamepad
         /// </summary>
-        private void HandleUserInput()
+        private async void HandleUserInput()
         {
-            Vector2 moveInputVector2 = _moveInputAction.ReadValue<Vector2>();
+            Vector2 moveInputVector2 = _playerMoveInputAction.ReadValue<Vector2>();
             
             if (moveInputVector2.magnitude > 0.1f)
             {
@@ -89,26 +152,53 @@ namespace RMC.MyProject.Scenes
                 // Move with arrow keys / WASD / gamepad
                 _playerRigidBody.AddForce(moveInputVector3 * _playerMoveSpeed, ForceMode.Acceleration);
                 
-                if (_moveInputAction.WasPerformedThisFrame())
+                if (_playerMoveInputAction.WasPerformedThisFrame())
                 {
-                    PlayAudioClip("Click01");
+                    PlayAudioClip(PlayerMoveAudioClip);
                 }
             }
 
-            if (_jumpInputAction.WasPerformedThisFrame())
+            if (_playerJumpInputAction.WasPerformedThisFrame())
             {
                 // Jump with spacebar / gamepad
                 _playerRigidBody.AddForce(Vector3.up * _playerJumpSpeed, ForceMode.Impulse);
-                PlayAudioClip("ItemUpdate01");
+                
+                // Reward points per jump
+                Score = Score + 1;
+                
+                //Check game over
+                if (Score >= ScoreMax)
+                {
+                    // Play sound
+                    PlayAudioClip(GameWinAudioClip);
+                    
+                    // Wait before disable (Cosmetic polish)
+                    await Task.Delay(3000/2);    
+                    
+                    // Disable player
+                    PlayerInputIsEnabled = false;
+                    
+                    // Wait for rest of sound
+                    await Task.Delay(3000/2);    
+                    
+                    // Reload
+                    ReloadGame();
+                    return;
+                }
+                
+                // Play sound
+                PlayAudioClip(PlayerJumpAudioClip);
+          
             }
             
-            if (_resetInputAction.IsPressed())
+            if (_gameResetInputAction.IsPressed())
             {
                 // Reload the current scene with R key 
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                ReloadGame();
             }
-
         }
+
+
 
         /// <summary>
         /// Check for out of bounds
@@ -117,9 +207,34 @@ namespace RMC.MyProject.Scenes
         {
             if (_playerRigidBody.transform.position.y < -5)
             {
-                // Reload the current scene if character falls off Floor
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                // Decrement life
+                Lives -= 1;
+                
+                // Play sound
+                PlayAudioClip(PlayerResetAudioClip);
+                
+                //Check game over
+                if (Lives <= 0)
+                {
+                    ReloadGame();
+                    return;
+                }
+                
+                // Reset player position
+                _playerRigidBody.transform.position = new Vector3(0, 0, 0);
+                _playerRigidBody.angularVelocity = Vector3.zero;
+                _playerRigidBody.linearVelocity = Vector3.zero;
+          
             }
+        }
+        
+        
+        /// <summary>
+        /// Restart the same Scene as a #hack to restart the game
+        /// </summary>
+        private void ReloadGame()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         
 
@@ -133,5 +248,7 @@ namespace RMC.MyProject.Scenes
         }
 
         //  Event Handlers --------------------------------
+        
+        
     }
 }

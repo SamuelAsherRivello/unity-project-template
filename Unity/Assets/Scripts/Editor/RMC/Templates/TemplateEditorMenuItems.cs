@@ -24,6 +24,7 @@ namespace RMC.Templates
 		private const string ProjectName = "[MyProject]";
 		private const int Priority = -100;
 		
+		
 		//  Unity Methods ---------------------------------
 
 
@@ -34,12 +35,14 @@ namespace RMC.Templates
 			Debug.Log("SampleMenuItem()");
 		}
 
+		
 		[MenuItem(MenuItemName01, true, Priority)]
 		public static bool SampleMenuItem_Validate()
 		{
 			return true; //return false to grey-out the menu item
 		}
 
+		
 		//  Event Handlers --------------------------------
 	}
 }

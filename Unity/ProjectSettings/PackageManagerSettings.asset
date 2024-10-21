@@ -16,7 +16,9 @@ MonoBehaviour:
   m_AdvancedSettingsExpanded: 1
   m_ScopedRegistriesSettingsExpanded: 1
   m_SeeAllPackageVersions: 0
+  m_DismissPreviewPackagesInUse: 0
   oneTimeWarningShown: 0
+  oneTimeDeprecatedPopUpShown: 0
   m_Registries:
   - m_Id: main
     m_Name: 
@@ -33,19 +35,19 @@ MonoBehaviour:
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4
-  - m_Id: scoped:project:OpenUPM
-    m_Name: OpenUPM
+  - m_Id: scoped:project:OpenUPM.com
+    m_Name: OpenUPM.com
     m_Url: https://package.openupm.com
     m_Scopes:
     - com.virtualmaker
     m_IsDefault: 0
     m_Capabilities: 0
     m_ConfigSource: 4
-  m_UserSelectedRegistryName: Npmjs.org
+  m_UserSelectedRegistryName: OpenUPM.com
   m_UserAddingNewScopedRegistry: 0
   m_RegistryInfoDraft:
     m_Modified: 0
     m_ErrorMessage: 
-    m_UserModificationsInstanceId: -846
-    m_OriginalInstanceId: -848
+    m_UserModificationsInstanceId: -876
+    m_OriginalInstanceId: -880
   m_LoadAssets: 0

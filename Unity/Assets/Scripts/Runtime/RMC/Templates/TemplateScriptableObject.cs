@@ -18,7 +18,17 @@ namespace RMC.Templates
 	public class TemplateScriptableObject : ScriptableObject
 	{
 		//  Properties ------------------------------------
-		public string SamplePublicText { get { return _samplePublicText; } set { _samplePublicText = value; }}
+		public string SamplePublicText
+		{
+			get
+			{
+				return _samplePublicText;
+			}
+			set
+			{
+				_samplePublicText = value;
+			}
+		}
 
 
 		//  Fields ----------------------------------------
