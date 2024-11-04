@@ -17,11 +17,13 @@ The project includes best practices for **project structure** and **C# coding st
 1. Enjoy
 
 <BR>
+<BR>
 
 **Getting Started: Video**
 
 <a href="https://www.youtube.com/playlist?list=PL5domiITryHhlCKPSpiGuUt_kQg0nk3Of"><img width="600" src="https://i3.ytimg.com/vi/pXzLXNEW3bk/maxresdefault.jpg" /></a>
 
+<BR>
 <BR>
 
 ## Table of Contents
@@ -36,6 +38,7 @@ The project includes best practices for **project structure** and **C# coding st
 
 
 
+<BR>
 <BR>
 
 ## About
@@ -179,8 +182,8 @@ Here are more articles from Samuel Asher Rivello.
 **Created By**
 
 - Samuel Asher Rivello
-- Over 25 years XP with game development (2024)
-- Over 11 years XP with Unity (2024)
+- Over 26 years XP with game development (2025)
+- Over 12 years XP with Unity (2025)
 
 **Contact**
 
@@ -191,4 +194,4 @@ Here are more articles from Samuel Asher Rivello.
 
 **License**
 
-Provided as-is under <a href="./LICENSE">MIT License</a> | Copyright ™ & © 2006 - 2024 Rivello Multimedia Consulting, LLC
+Provided as-is under <a href="./LICENSE">MIT License</a> | Copyright ™ & © 2006 - 2025 Rivello Multimedia Consulting, LLC
