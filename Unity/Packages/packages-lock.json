@@ -1,30 +1,22 @@
 {
   "dependencies": {
     "com.rmc.rmc-audio": {
-      "version": "1.8.3",
+      "version": "1.8.4",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.rmc.rmc-readme": "1.2.1",
-        "com.rmc.rmc-core": "1.8.0"
+        "com.rmc.rmc-core": "1.9.4"
       },
       "url": "https://registry.npmjs.org"
     },
     "com.rmc.rmc-core": {
-      "version": "1.8.0",
-      "depth": 1,
+      "version": "1.9.5",
+      "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.rmc.rmc-newtonsoft.json-for-unity": "10.0.302",
         "com.rmc.rmc-unitask": "2.3.32"
       },
-      "url": "https://registry.npmjs.org"
-    },
-    "com.rmc.rmc-newtonsoft.json-for-unity": {
-      "version": "10.0.302",
-      "depth": 1,
-      "source": "registry",
-      "dependencies": {},
       "url": "https://registry.npmjs.org"
     },
     "com.rmc.rmc-readme": {
@@ -42,7 +34,7 @@
       "url": "https://registry.npmjs.org"
     },
     "com.unity.ai.navigation": {
-      "version": "2.0.4",
+      "version": "2.0.5",
       "depth": 0,
       "source": "registry",
       "dependencies": {
