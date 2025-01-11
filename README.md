@@ -182,8 +182,8 @@ Here are more articles from Samuel Asher Rivello.
 **Created By**
 
 - Samuel Asher Rivello
-- Over 26 years XP with game development (2025)
-- Over 12 years XP with Unity (2025)
+- Over 25 years XP with game development (2025)
+- Over 10 years XP with Unity (2025)
 
 **Contact**
 
