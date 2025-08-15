@@ -1,0 +1,11 @@
+:root {
+    --theme-background-color: rgba(200, 200, 200, 1);
+    --theme-background-color-half: rgba(200, 200, 200, 0.5);
+    --theme-background-color-inverse: rgba(100, 100, 100, 1);
+    --theme-background-color-inverse-half: rgba(100, 100, 100, 0.5);
+    
+    --theme-font-color: rgba(20, 20, 20, 1);
+    --theme-font-color-half: rgba(20, 20, 20, 0.5);
+    --theme-font-color-inverse: rgba(200, 200, 200, 1);
+    --theme-font-color-inverse-half: rgba(200, 200, 200, 0.5);
+}

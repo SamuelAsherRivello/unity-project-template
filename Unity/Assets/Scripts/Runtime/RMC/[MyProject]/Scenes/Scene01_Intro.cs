@@ -4,6 +4,7 @@ using RMC.MyProject.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 namespace RMC.MyProject.Scenes
 {
@@ -31,7 +32,7 @@ namespace RMC.MyProject.Scenes
             set
             {
                 _score = value;
-                HudUI.SetScore($"Score: {_score:000}/{ScoreMax:000}");
+                HudUI.ScoreLabel.text = $"Score: {_score:000}/{ScoreMax:000}";
             }
         }
         
@@ -44,7 +45,7 @@ namespace RMC.MyProject.Scenes
             set
             {
                 _lives = value;
-                HudUI.SetLives($"Lives: {_lives:000}/{LivesMax:000}");
+                HudUI.LivesLabel.text = $"Lives: {_lives:000}/{LivesMax:000}";
             }
         }
 
@@ -95,9 +96,10 @@ namespace RMC.MyProject.Scenes
         private float _playerJumpSpeed = 5;
 
         // Input
-        private InputAction _playerMoveInputAction;
-        private InputAction _playerJumpInputAction;
-        private InputAction _gameResetInputAction;
+        private InputAction _movePlayerInputAction;
+        private InputAction _jumpPlayerInputAction;
+        private InputAction _resetGameInputAction;
+        private InputAction _toggleThemeInputAction;
         
         // Data
         private int _score = 0;
@@ -111,7 +113,6 @@ namespace RMC.MyProject.Scenes
         private const string PlayerJumpAudioClip = "ItemUpdate01";
         private const string PlayerMoveAudioClip = "Click01";
         
-        
         //  Unity Methods ---------------------------------
         
         /// <summary>
@@ -122,18 +123,40 @@ namespace RMC.MyProject.Scenes
             Debug.Log($"{GetType().Name}.Start()");
             
             // Input
-            _playerMoveInputAction = InputSystem.actions.FindAction("Move");
-            _playerJumpInputAction = InputSystem.actions.FindAction("Jump");
-            _gameResetInputAction = InputSystem.actions.FindAction("Reset");
+            _movePlayerInputAction = InputSystem.actions.FindAction("MovePlayer");
+            _jumpPlayerInputAction = InputSystem.actions.FindAction("JumpPlayer");
+            _resetGameInputAction = InputSystem.actions.FindAction("ResetGame");
+            _toggleThemeInputAction = InputSystem.actions.FindAction("ToggleTheme");
             IsEnabledInput = true;
 
             // UI
             Score = 0;
             Lives = LivesMax;
-            HudUI.SetInstructions("Instructions: WASD/Arrows, Spacebar, R");
-            HudUI.SetTitle(SceneManager.GetActiveScene().name);
+            SetInstructions();
+            SetTitle();
         }
 
+        /// <summary>
+        /// Set the instructions based on the current input configuration.
+        /// </summary>
+        private void SetInstructions()
+        {
+            HudUI.InstructionsLabel.text = $"Instructions: WASD/Arrows, Spacebar, R, T";
+        }
+
+        /// <summary>
+        /// Set the title based
+        /// </summary>
+        private void SetTitle()
+        {
+            string themeName = "Light";
+            if (MyProjectSingleton.Instance.ThemeManager.IsDark)
+            {
+                themeName = "Dark";
+            }
+
+            HudUI.TitleLabel.text = $"{SceneManager.GetActiveScene().name} ({themeName})";
+        }
 
         /// <summary>
         /// Runs every frame. Use for input/physics/gameplay
@@ -150,7 +173,6 @@ namespace RMC.MyProject.Scenes
             CheckPlayerFalling();
         }
 
-
         //  Methods ---------------------------------------
         
         /// <summary>
@@ -158,7 +180,7 @@ namespace RMC.MyProject.Scenes
         /// </summary>
         private async void HandleUserInput()
         {
-            Vector2 moveInputVector2 = _playerMoveInputAction.ReadValue<Vector2>();
+            Vector2 moveInputVector2 = _movePlayerInputAction.ReadValue<Vector2>();
 
             if (moveInputVector2.magnitude > MoveInputMinimumMagnitude)
             {
@@ -179,14 +201,14 @@ namespace RMC.MyProject.Scenes
                     _playerRigidBody.AddForce(moveInputVector3 * (_playerMoveSpeedAir * Time.deltaTime), ForceMode.Force);
                 }
 
-                if (_playerMoveInputAction.WasPerformedThisFrame())
+                if (_movePlayerInputAction.WasPerformedThisFrame())
                 {
                     PlayAudioClip(PlayerMoveAudioClip);
                 }
             }
 
             // Only allow jump when grounded
-            if (_playerJumpInputAction.WasPerformedThisFrame() && IsPlayerGrounded)
+            if (_jumpPlayerInputAction.WasPerformedThisFrame() && IsPlayerGrounded)
             {
                 // Jump with spacebar / gamepad
                 _playerRigidBody.AddForce(Vector3.up * _playerJumpSpeed, ForceMode.Impulse);
@@ -220,10 +242,16 @@ namespace RMC.MyProject.Scenes
           
             }
             
-            if (_gameResetInputAction.IsPressed())
+            if (_resetGameInputAction.WasPerformedThisFrame())
             {
                 // Reload the current scene with R key 
                 ReloadGame();
+            }
+
+            if (_toggleThemeInputAction.WasPerformedThisFrame())
+            {
+                // Toggle the current theme with T key
+                ToggleTheme();
             }
         }
 
@@ -251,10 +279,8 @@ namespace RMC.MyProject.Scenes
                 _playerRigidBody.transform.position = new Vector3(0, 0, 0);
                 _playerRigidBody.angularVelocity = Vector3.zero;
                 _playerRigidBody.linearVelocity = Vector3.zero;
-          
             }
         }
-
 
         /// <summary>
         /// Restart the same Scene as a #hack to restart the game
@@ -263,7 +289,18 @@ namespace RMC.MyProject.Scenes
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        
+
+        /// <summary>
+        /// Reload the current Scene to toggle themes.
+        /// </summary>
+        private void ToggleTheme()
+        {
+            MyProjectSingleton.Instance.ThemeManager.IsDark =
+                !MyProjectSingleton.Instance.ThemeManager.IsDark;
+
+            SetTitle();
+        }
+
         /// <summary>
         /// Check if the player is grounded using a raycast.
         /// </summary>
@@ -276,7 +313,6 @@ namespace RMC.MyProject.Scenes
             IsPlayerGrounded= Physics.Raycast(playerCenterpointDownward, out _, PhysicsRaycastMaximumDistance);
         }
 
-
         /// <summary>
         /// Play system using the AudioManager imported via https://github.com/SamuelAsherRivello/rmc-core/
         /// </summary>
@@ -287,7 +323,6 @@ namespace RMC.MyProject.Scenes
         }
 
         //  Event Handlers --------------------------------
-        
-        
+
     }
 }

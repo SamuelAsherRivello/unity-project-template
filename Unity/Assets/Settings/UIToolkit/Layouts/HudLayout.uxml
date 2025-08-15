@@ -1,0 +1,22 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Settings/UIToolkit/Styles/HudStyles.uss?fileID=7433441132597879392&amp;guid=6ebbbe798c96bf344b8b9360316b9108&amp;type=3#HudStyles" />
+    <ui:VisualElement name="Screen" class="screen-container">
+        <ui:VisualElement name="Panel" class="panel-container">
+            <ui:VisualElement class="corner-container alignUpperLeft">
+                <ui:Label name="UpperLeftLabel" text="Lives: 003"/>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="corner-container alignUpperRight">
+                <ui:Label name="UpperRightLabel" text="Score: 000"/>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="corner-container alignLowerLeft">
+                <ui:Label name="LowerLeftLabel" text="Instructions..."/>
+            </ui:VisualElement>
+
+            <ui:VisualElement class="corner-container alignLowerRight">
+                <ui:Label name="LowerRightLabel" text="Scene01_Intro"/>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
