@@ -808,7 +808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1390784477}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1601824, y: 2.5419917e-16, z: -4.1250882e-17, w: 0.9870875}
+  m_LocalRotation: {x: 0.1601824, y: 2.5419914e-16, z: -4.1250885e-17, w: 0.9870874}
   m_LocalPosition: {x: 0, y: 5, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -900,7 +900,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hudUI: {fileID: 1756644691}
   _playerRigidBody: {fileID: 64991508}
-  _playerMoveSpeed: 1000
+  _playerMoveSpeedGround: 1000
+  _playerMoveSpeedAir: 250
   _playerJumpSpeed: 5
 --- !u!4 &1409149260
 Transform:
