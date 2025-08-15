@@ -12,6 +12,13 @@ namespace RMC.MyProject.Scenes
     /// </summary>
     public class Scene01_Intro : MonoBehaviour
     {
+
+        //  Constants -------------------------------------
+        private const int ScoreMax = 5;
+        private const int LivesMax = 3;
+        private const float MoveInputMinimumMagnitude = 0.1f;
+        private const float PhysicsRaycastMaximumDistance = 0.6f;
+
         //  Properties ------------------------------------
         public HudUI HudUI { get { return _hudUI; } }
 
@@ -41,23 +48,33 @@ namespace RMC.MyProject.Scenes
             }
         }
 
-        public bool PlayerInputIsEnabled 
+        public bool IsEnabledInput
         {
             get
             {
-                return _playerInputIsEnabled;
+                return _isEnabledInput;
             }
             set
             {
-                _playerInputIsEnabled = value;
-                
+                _isEnabledInput = value;
+
                 // Freeze player in position when no input
-                _playerRigidBody.isKinematic = !_playerInputIsEnabled;
+                _playerRigidBody.isKinematic = !_isEnabledInput;
             }
         }
 
-        
-            
+        public bool IsPlayerGrounded
+        {
+            get
+            {
+                return _isPlayerGrounded;
+            }
+            private set
+            {
+                _isPlayerGrounded = value;
+            }
+        }
+
         //  Fields ----------------------------------------
         [Header("UI")]
         [SerializeField]
@@ -66,9 +83,13 @@ namespace RMC.MyProject.Scenes
         [Header("Player")]
         [SerializeField]
         private Rigidbody _playerRigidBody;
-        
+
+        [Header("Configuration")]
         [SerializeField]
-        private float _playerMoveSpeed = 4;
+        private float _playerMoveSpeedGround = 1000;
+
+        [SerializeField]
+        private float _playerMoveSpeedAir = 250;
         
         [SerializeField]
         private float _playerJumpSpeed = 5;
@@ -81,10 +102,9 @@ namespace RMC.MyProject.Scenes
         // Data
         private int _score = 0;
         private int _lives = 0;
-        private const int ScoreMax = 5;
-        private const int LivesMax = 3;
-        private bool _playerInputIsEnabled = true;
-        
+        private bool _isEnabledInput = true;
+        private bool _isPlayerGrounded = false;
+
         // Audio
         private const string PlayerResetAudioClip = "ItemRead01";
         private const string GameWinAudioClip = "Music_Win01";
@@ -105,32 +125,32 @@ namespace RMC.MyProject.Scenes
             _playerMoveInputAction = InputSystem.actions.FindAction("Move");
             _playerJumpInputAction = InputSystem.actions.FindAction("Jump");
             _gameResetInputAction = InputSystem.actions.FindAction("Reset");
-            PlayerInputIsEnabled = true;
-            
+            IsEnabledInput = true;
+
             // UI
             Score = 0;
             Lives = LivesMax;
             HudUI.SetInstructions("Instructions: WASD/Arrows, Spacebar, R");
             HudUI.SetTitle(SceneManager.GetActiveScene().name);
-            
         }
 
-        
+
         /// <summary>
         /// Runs every frame. Use for input/physics/gameplay
         /// </summary>
         protected void Update()
         {
-            if (!PlayerInputIsEnabled)
+            if (!IsEnabledInput)
             {
                 return;
             }
             
+            UpdateIsPlayerGrounded();
             HandleUserInput();
             CheckPlayerFalling();
         }
 
-        
+
         //  Methods ---------------------------------------
         
         /// <summary>
@@ -139,8 +159,8 @@ namespace RMC.MyProject.Scenes
         private async void HandleUserInput()
         {
             Vector2 moveInputVector2 = _playerMoveInputAction.ReadValue<Vector2>();
-            
-            if (moveInputVector2.magnitude > 0.1f)
+
+            if (moveInputVector2.magnitude > MoveInputMinimumMagnitude)
             {
                 Vector3 moveInputVector3 = new Vector3
                 (
@@ -148,35 +168,44 @@ namespace RMC.MyProject.Scenes
                     0,
                     moveInputVector2.y
                 );
-                
+
                 // Move with arrow keys / WASD / gamepad
-                _playerRigidBody.AddForce(moveInputVector3 * _playerMoveSpeed, ForceMode.Acceleration);
-                
+                if (IsPlayerGrounded)
+                {
+                    _playerRigidBody.AddForce(moveInputVector3 * (_playerMoveSpeedGround * Time.deltaTime), ForceMode.Force);
+                }
+                else
+                {
+                    _playerRigidBody.AddForce(moveInputVector3 * (_playerMoveSpeedAir * Time.deltaTime), ForceMode.Force);
+                }
+
                 if (_playerMoveInputAction.WasPerformedThisFrame())
                 {
                     PlayAudioClip(PlayerMoveAudioClip);
                 }
             }
 
-            if (_playerJumpInputAction.WasPerformedThisFrame())
+            // Only allow jump when grounded
+            if (_playerJumpInputAction.WasPerformedThisFrame() && IsPlayerGrounded)
             {
                 // Jump with spacebar / gamepad
                 _playerRigidBody.AddForce(Vector3.up * _playerJumpSpeed, ForceMode.Impulse);
-                
+                IsPlayerGrounded = false; // Prevent immediate re-jump until next ground check
+
                 // Reward points per jump
-                Score = Score + 1;
-                
+                Score += 1;
+
                 //Check game over
                 if (Score >= ScoreMax)
                 {
                     // Play sound
                     PlayAudioClip(GameWinAudioClip);
-                    
+
+                    // Disable player
+                    IsEnabledInput = false;
+
                     // Wait before disable (Cosmetic polish)
                     await Task.Delay(3000/2);    
-                    
-                    // Disable player
-                    PlayerInputIsEnabled = false;
                     
                     // Wait for rest of sound
                     await Task.Delay(3000/2);    
@@ -197,8 +226,6 @@ namespace RMC.MyProject.Scenes
                 ReloadGame();
             }
         }
-
-
 
         /// <summary>
         /// Check for out of bounds
@@ -227,8 +254,8 @@ namespace RMC.MyProject.Scenes
           
             }
         }
-        
-        
+
+
         /// <summary>
         /// Restart the same Scene as a #hack to restart the game
         /// </summary>
@@ -237,6 +264,18 @@ namespace RMC.MyProject.Scenes
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         
+        /// <summary>
+        /// Check if the player is grounded using a raycast.
+        /// </summary>
+        private void UpdateIsPlayerGrounded()
+        {
+            // Raycast slightly below the rigidbody position to detect ground.
+            // Assumes pivot near center; adjust distance in Inspector.
+            var playerCenterpoint = _playerRigidBody.transform.position;
+            Ray playerCenterpointDownward = new Ray(playerCenterpoint, Vector3.down);
+            IsPlayerGrounded= Physics.Raycast(playerCenterpointDownward, out _, PhysicsRaycastMaximumDistance);
+        }
+
 
         /// <summary>
         /// Play system using the AudioManager imported via https://github.com/SamuelAsherRivello/rmc-core/
