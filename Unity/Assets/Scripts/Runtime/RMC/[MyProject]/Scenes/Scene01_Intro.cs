@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using R3;
 using RMC.Audio;
 using RMC.MyProject.UI;
 using UnityEngine;
@@ -33,6 +34,9 @@ namespace RMC.MyProject.Scenes
             {
                 _score = value;
                 HudUI.ScoreLabel.text = $"Score: {_score:000}/{ScoreMax:000}";
+                
+                // R3 ReactiveProperty Demo: Update reactive score
+                _reactiveScore.Value = _score;
             }
         }
         
@@ -113,6 +117,9 @@ namespace RMC.MyProject.Scenes
         private const string PlayerJumpAudioClip = "ItemUpdate01";
         private const string PlayerMoveAudioClip = "Click01";
         
+        // R3 Reactive Property Demo
+        private ReactiveProperty<int> _reactiveScore = new ReactiveProperty<int>(0);
+        
         //  Unity Methods ---------------------------------
         
         /// <summary>
@@ -121,6 +128,12 @@ namespace RMC.MyProject.Scenes
         protected void Start()
         {
             Debug.Log($"{GetType().Name}.Start()");
+            
+            // R3 ReactiveProperty Demo: Subscribe to reactive score changes
+            _reactiveScore.Subscribe(score => 
+            {
+                Debug.Log($"[R3 Demo] Reactive Score changed to: {score}");
+            });
             
             // Input
             _movePlayerInputAction = InputSystem.actions.FindAction("MovePlayer");
@@ -320,6 +333,15 @@ namespace RMC.MyProject.Scenes
         private void PlayAudioClip(string audioClipName)
         {
             AudioManager.Instance.PlayAudioClip(audioClipName);
+        }
+        
+        /// <summary>
+        /// Clean up resources when the GameObject is destroyed
+        /// </summary>
+        protected void OnDestroy()
+        {
+            // R3 ReactiveProperty Demo: Dispose of reactive property
+            _reactiveScore?.Dispose();
         }
 
         //  Event Handlers --------------------------------
