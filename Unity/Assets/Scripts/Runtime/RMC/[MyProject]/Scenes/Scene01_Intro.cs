@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Cysharp.R3;
 using RMC.Audio;
 using RMC.MyProject.UI;
 using UnityEngine;
@@ -32,7 +33,8 @@ namespace RMC.MyProject.Scenes
             set
             {
                 _score = value;
-                HudUI.ScoreLabel.text = $"Score: {_score:000}/{ScoreMax:000}";
+                // Update the reactive property, which will trigger the subscription
+                _reactiveScore.Value = value;
             }
         }
         
@@ -107,6 +109,9 @@ namespace RMC.MyProject.Scenes
         private bool _isEnabledInput = true;
         private bool _isPlayerGrounded = false;
 
+        // R3 Reactive Property Demo
+        private ReactiveProperty<int> _reactiveScore = new ReactiveProperty<int>(0);
+
         // Audio
         private const string PlayerResetAudioClip = "ItemRead01";
         private const string GameWinAudioClip = "Music_Win01";
@@ -121,6 +126,14 @@ namespace RMC.MyProject.Scenes
         protected void Start()
         {
             Debug.Log($"{GetType().Name}.Start()");
+            
+            // R3 ReactiveProperty Demo - Subscribe to changes
+            _reactiveScore.Subscribe(newScore => 
+            {
+                Debug.Log($"[R3 Demo] Reactive Score changed to: {newScore}");
+                // Update the UI when the reactive score changes
+                HudUI.ScoreLabel.text = $"Score: {newScore:000}/{ScoreMax:000}";
+            }).AddTo(this);
             
             // Input
             _movePlayerInputAction = InputSystem.actions.FindAction("MovePlayer");
@@ -156,6 +169,15 @@ namespace RMC.MyProject.Scenes
             }
 
             HudUI.TitleLabel.text = $"{SceneManager.GetActiveScene().name} ({themeName})";
+        }
+
+        /// <summary>
+        /// Runs when the GameObject is destroyed. Clean up resources.
+        /// </summary>
+        protected void OnDestroy()
+        {
+            // Dispose the ReactiveProperty when the GameObject is destroyed
+            _reactiveScore?.Dispose();
         }
 
         /// <summary>
