@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Cysharp.R3;
 using RMC.Audio;
 using RMC.MyProject.UI;
 using UnityEngine;
@@ -27,12 +28,12 @@ namespace RMC.MyProject.Scenes
         {
             get
             {
-                return _score;
+                return _reactiveScore.Value;
             }
             set
             {
-                _score = value;
-                HudUI.ScoreLabel.text = $"Score: {_score:000}/{ScoreMax:000}";
+                _reactiveScore.Value = value;
+                HudUI.ScoreLabel.text = $"Score: {_reactiveScore.Value:000}/{ScoreMax:000}";
             }
         }
         
@@ -102,10 +103,12 @@ namespace RMC.MyProject.Scenes
         private InputAction _toggleThemeInputAction;
         
         // Data
-        private int _score = 0;
         private int _lives = 0;
         private bool _isEnabledInput = true;
         private bool _isPlayerGrounded = false;
+
+        // R3 ReactiveProperty demonstration
+        private readonly ReactiveProperty<int> _reactiveScore = new ReactiveProperty<int>(0);
 
         // Audio
         private const string PlayerResetAudioClip = "ItemRead01";
@@ -121,6 +124,12 @@ namespace RMC.MyProject.Scenes
         protected void Start()
         {
             Debug.Log($"{GetType().Name}.Start()");
+            
+            // R3 ReactiveProperty demonstration - Subscribe to score changes
+            _reactiveScore.Subscribe(newScore => 
+            {
+                Debug.Log($"[R3 Demo] Score changed to: {newScore}");
+            }).AddTo(this);
             
             // Input
             _movePlayerInputAction = InputSystem.actions.FindAction("MovePlayer");
