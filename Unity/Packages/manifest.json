@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.cysharp.r3": "https://github.com/Cysharp/R3.git",
+    "com.cysharp.r3": "https://github.com/Cysharp/R3.git?path=src/R3.Unity/Assets/R3.Unity",
     "com.rmc.rmc-audio": "1.8.4",
     "com.rmc.rmc-core": "1.9.5",
     "com.rmc.rmc-readme": "1.2.2",
