@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using R3;
 using RMC.Audio;
 using RMC.MyProject.UI;
 using UnityEngine;
@@ -33,6 +34,9 @@ namespace RMC.MyProject.Scenes
             {
                 _score = value;
                 HudUI.ScoreLabel.text = $"Score: {_score:000}/{ScoreMax:000}";
+                
+                // R3 ReactiveProperty demonstration - Update reactive property when score changes
+                _reactiveScore.Value = _score;
             }
         }
         
@@ -107,6 +111,9 @@ namespace RMC.MyProject.Scenes
         private bool _isEnabledInput = true;
         private bool _isPlayerGrounded = false;
 
+        // R3 ReactiveProperty demonstration
+        private ReactiveProperty<int> _reactiveScore = new ReactiveProperty<int>(0);
+
         // Audio
         private const string PlayerResetAudioClip = "ItemRead01";
         private const string GameWinAudioClip = "Music_Win01";
@@ -122,6 +129,12 @@ namespace RMC.MyProject.Scenes
         {
             Debug.Log($"{GetType().Name}.Start()");
             
+            // R3 ReactiveProperty demonstration - Subscribe to value changes
+            _reactiveScore.Subscribe(value => 
+            {
+                Debug.Log($"[R3 Demo] ReactiveScore changed to: {value}");
+            });
+            
             // Input
             _movePlayerInputAction = InputSystem.actions.FindAction("MovePlayer");
             _jumpPlayerInputAction = InputSystem.actions.FindAction("JumpPlayer");
@@ -134,6 +147,9 @@ namespace RMC.MyProject.Scenes
             Lives = LivesMax;
             SetInstructions();
             SetTitle();
+            
+            // R3 ReactiveProperty demonstration - Set initial value to trigger subscription
+            _reactiveScore.Value = 1;
         }
 
         /// <summary>
