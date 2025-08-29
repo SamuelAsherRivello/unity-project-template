@@ -55,6 +55,7 @@ This template contains the following:
 | [Cinemachine](https://docs.unity3d.com/Packages/com.unity.cinemachine@latest)                    | Advanced camera system for dynamic shots.                 |
 | [Physics](https://docs.unity3d.com/Manual/PhysicsSection.html)                                   | Physics simulation for 2D and 3D games.                   |
 | [ProBuilder](https://docs.unity3d.com/Packages/com.unity.probuilder@latest)                      | 3D modeling and level design toolset.                     |
+| [R3](https://github.com/Cysharp/R3)                                                              | Reactive Extensions for Unity with ReactiveProperty.       |
 | [Rendering: Post-Processing](https://docs.unity3d.com/Packages/com.unity.postprocessing@latest)  | Visual effects like color grading and bloom.              |
 | [Rendering: URP](https://docs.unity3d.com/Packages/com.unity.render-pipelines.universal@latest)  | Efficient rendering pipeline for various platforms.       |
 | [Text Mesh Pro](https://docs.unity3d.com/Packages/com.unity.textmeshpro@latest)                  | High-quality text rendering and formatting.               |
