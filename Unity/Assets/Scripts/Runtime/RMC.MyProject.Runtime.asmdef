@@ -4,7 +4,8 @@
     "references": [
         "GUID:75469ad4d38634e559750d17036d5f7c",
         "GUID:8d0b5587a0a8ae741afbfe3a79c2872a",
-        "GUID:9f522e882e6bd48429f616f259fa6318"
+        "GUID:9f522e882e6bd48429f616f259fa6318",
+        "Cysharp.R3"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

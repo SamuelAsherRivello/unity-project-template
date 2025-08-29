@@ -47,7 +47,8 @@ namespace RMC.MyProject.Scenes
             set
             {
                 _lives = value;
-                HudUI.LivesLabel.text = $"Lives: {_lives:000}/{LivesMax:000}";
+                // Update the reactive property, which will trigger the subscription
+                _reactiveLives.Value = value;
             }
         }
 
@@ -111,6 +112,7 @@ namespace RMC.MyProject.Scenes
 
         // R3 Reactive Property Demo
         private ReactiveProperty<int> _reactiveScore = new ReactiveProperty<int>(0);
+        private ReactiveProperty<int> _reactiveLives = new ReactiveProperty<int>(LivesMax);
 
         // Audio
         private const string PlayerResetAudioClip = "ItemRead01";
@@ -133,6 +135,13 @@ namespace RMC.MyProject.Scenes
                 Debug.Log($"[R3 Demo] Reactive Score changed to: {newScore}");
                 // Update the UI when the reactive score changes
                 HudUI.ScoreLabel.text = $"Score: {newScore:000}/{ScoreMax:000}";
+            }).AddTo(this);
+            
+            _reactiveLives.Subscribe(newLives => 
+            {
+                Debug.Log($"[R3 Demo] Reactive Lives changed to: {newLives}");
+                // Update the UI when the reactive lives changes
+                HudUI.LivesLabel.text = $"Lives: {newLives:000}/{LivesMax:000}";
             }).AddTo(this);
             
             // Input
@@ -176,8 +185,9 @@ namespace RMC.MyProject.Scenes
         /// </summary>
         protected void OnDestroy()
         {
-            // Dispose the ReactiveProperty when the GameObject is destroyed
+            // Dispose the ReactiveProperties when the GameObject is destroyed
             _reactiveScore?.Dispose();
+            _reactiveLives?.Dispose();
         }
 
         /// <summary>
