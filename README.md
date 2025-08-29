@@ -53,6 +53,7 @@ This template contains the following:
 | [Best Practices: Coding Standards](https://www.samuelasherrivello.com/best-practices)            | Guidelines for consistent code style and format.          |
 | [Best Practices: Project Structure](https://www.samuelasherrivello.com/best-practices)           | Recommended project structure and organization.           |
 | [Cinemachine](https://docs.unity3d.com/Packages/com.unity.cinemachine@latest)                    | Advanced camera system for dynamic shots.                 |
+| [Cysharp/R3](https://github.com/Cysharp/R3)                                                      | Reactive Extensions for Unity providing ReactiveProperty and observables. |
 | [Physics](https://docs.unity3d.com/Manual/PhysicsSection.html)                                   | Physics simulation for 2D and 3D games.                   |
 | [ProBuilder](https://docs.unity3d.com/Packages/com.unity.probuilder@latest)                      | 3D modeling and level design toolset.                     |
 | [Rendering: Post-Processing](https://docs.unity3d.com/Packages/com.unity.postprocessing@latest)  | Visual effects like color grading and bloom.              |
