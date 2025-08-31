@@ -788,38 +788,6 @@ Transform:
   - {fileID: 1390784478}
   m_Father: {fileID: 1743432866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &734903513
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 734903514}
-  m_Layer: 0
-  m_Name: UI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &734903514
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 734903513}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1756644693}
-  m_Father: {fileID: 1880782305}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1390784477
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,7 +885,7 @@ GameObject:
   - component: {fileID: 1409149260}
   - component: {fileID: 1409149259}
   m_Layer: 0
-  m_Name: Scene01_Intro
+  m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -935,9 +903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd532fa3f64192b468c4a37bb05418a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hudUI: {fileID: 1756644691}
-  _lightStyleSheet: {fileID: -4733365628477956816, guid: c7e1f910f349558419874ff8089ae89b, type: 3}
-  _darkStyleSheet: {fileID: 7433441132597879392, guid: a649ba4410a604a458dbb939a441189d, type: 3}
+  _gameView: {fileID: 1756644691}
   _playerRigidBody: {fileID: 64991508}
   _playerMoveSpeedGround: 1000
   _playerMoveSpeedAir: 250
@@ -1095,7 +1061,7 @@ GameObject:
   - component: {fileID: 1756644692}
   - component: {fileID: 1756644691}
   m_Layer: 0
-  m_Name: Hud
+  m_Name: GameView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1150,7 +1116,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 734903514}
+  m_Father: {fileID: 1880782305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1794521668
 GameObject:
@@ -1309,10 +1275,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1920628842}
+  - {fileID: 109795327}
+  - {fileID: 1756644693}
   - {fileID: 1672626523}
   - {fileID: 1743432866}
-  - {fileID: 109795327}
-  - {fileID: 734903514}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1920628841

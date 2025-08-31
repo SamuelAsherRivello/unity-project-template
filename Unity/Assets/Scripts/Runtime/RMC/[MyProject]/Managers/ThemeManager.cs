@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using R3;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -7,26 +8,17 @@ namespace RMC.MyProject.Scenes
 {
     public class ThemeManager
     {
+        // Members --------------------------------------
         private readonly StyleSheet _lightStyleSheet;
         private readonly StyleSheet _darkStyleSheet;
-        private bool _isDark = true;
+
+        // Reactive Extensions --------------------------
 
         /// <summary>
         /// Property to get or set the current theme. Defaults to Dark.
         /// Setting this property toggles between Light and Dark themes.
         /// </summary>
-        public bool IsDark
-        {
-            get => _isDark;
-            set
-            {
-                if (_isDark != value)
-                {
-                    _isDark = value;
-                    ApplyTheme();
-                }
-            }
-        }
+        public readonly ReactiveProperty<bool> IsDark = new ReactiveProperty<bool>(true);
 
         /// <summary>
         /// Constructor for ThemeManager. Initializes the theme to Dark.
@@ -37,27 +29,8 @@ namespace RMC.MyProject.Scenes
         {
             _lightStyleSheet = lightStyleSheet;
             _darkStyleSheet = darkStyleSheet;
-
-            // Initialize with the dark theme
-            ApplyDarkTheme();
+            IsDark.Subscribe(_ => OnIsDarkChanged());
         }
-
-
-        /// <summary>
-        /// Applies the current theme based on the value of IsDark.
-        /// </summary>
-        private void ApplyTheme()
-        {
-            if (_isDark)
-            {
-                ApplyDarkTheme();
-            }
-            else
-            {
-                ApplyLightTheme();
-            }
-        }
-
 
         /// <summary>
         /// Applies the Light theme.
@@ -80,7 +53,6 @@ namespace RMC.MyProject.Scenes
             }
         }
 
-
         /// <summary>
         /// Applies the Dark theme.
         /// </summary>
@@ -99,6 +71,23 @@ namespace RMC.MyProject.Scenes
                 {
                     uiDocument.rootVisualElement.styleSheets.Add(_darkStyleSheet);
                 }
+            }
+        }
+
+        // Event Handlers --------------------------------
+
+        /// <summary>
+        /// Applies the current theme based on the value of IsDark.
+        /// </summary>
+        private void OnIsDarkChanged()
+        {
+            if (IsDark.Value)
+            {
+                ApplyDarkTheme();
+            }
+            else
+            {
+                ApplyLightTheme();
             }
         }
     }

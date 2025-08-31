@@ -1,66 +1,33 @@
 using System.Threading.Tasks;
+using R3;
 using RMC.Audio;
 using RMC.MyProject.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.UIElements;
 
 namespace RMC.MyProject.Scenes
 {
     /// <summary>
     /// Main entry point for the Scene.
     /// </summary>
-    public class Scene01_Intro : MonoBehaviour
+    public class GameController : MonoBehaviour
     {
-
-        //  Constants -------------------------------------
-        private const int ScoreMax = 5;
-        private const int LivesMax = 3;
-        private const float MoveInputMinimumMagnitude = 0.1f;
-        private const float PhysicsRaycastMaximumDistance = 0.6f;
-
         //  Properties ------------------------------------
-        public HudUI HudUI { get { return _hudUI; } }
+        public GameView GameView { get { return _gameView; } }
 
-        public int Score 
+        public bool IsInputEnabled
         {
             get
             {
-                return _score;
+                return _isInputEnabled;
             }
             set
             {
-                _score = value;
-                HudUI.ScoreLabel.text = $"Score: {_score:000}/{ScoreMax:000}";
-            }
-        }
-        
-        public int Lives 
-        {
-            get
-            {
-                return _lives;
-            }
-            set
-            {
-                _lives = value;
-                HudUI.LivesLabel.text = $"Lives: {_lives:000}/{LivesMax:000}";
-            }
-        }
-
-        public bool IsEnabledInput
-        {
-            get
-            {
-                return _isEnabledInput;
-            }
-            set
-            {
-                _isEnabledInput = value;
+                _isInputEnabled = value;
 
                 // Freeze player in position when no input
-                _playerRigidBody.isKinematic = !_isEnabledInput;
+                _playerRigidBody.isKinematic = !_isInputEnabled;
             }
         }
 
@@ -79,7 +46,7 @@ namespace RMC.MyProject.Scenes
         //  Fields ----------------------------------------
         [Header("UI")]
         [SerializeField]
-        private HudUI _hudUI;
+        private GameView _gameView;
 
         [Header("Player")]
         [SerializeField]
@@ -102,60 +69,55 @@ namespace RMC.MyProject.Scenes
         private InputAction _toggleThemeInputAction;
         
         // Data
-        private int _score = 0;
-        private int _lives = 0;
-        private bool _isEnabledInput = true;
+        private bool _isInputEnabled = true;
         private bool _isPlayerGrounded = false;
+        private CompositeDisposable _disposable = new CompositeDisposable();
 
         // Audio
         private const string PlayerResetAudioClip = "ItemRead01";
         private const string GameWinAudioClip = "Music_Win01";
         private const string PlayerJumpAudioClip = "ItemUpdate01";
         private const string PlayerMoveAudioClip = "Click01";
+
+        // Model
+        private GameModel _gameModel;
         
         //  Unity Methods ---------------------------------
         
         /// <summary>
-        /// Runs once per Scene. Use for initialization
+        /// Runs once per Scene during the beginning. Use for initialization
         /// </summary>
         protected void Start()
         {
             Debug.Log($"{GetType().Name}.Start()");
-            
+
             // Input
             _movePlayerInputAction = InputSystem.actions.FindAction("MovePlayer");
             _jumpPlayerInputAction = InputSystem.actions.FindAction("JumpPlayer");
             _resetGameInputAction = InputSystem.actions.FindAction("ResetGame");
             _toggleThemeInputAction = InputSystem.actions.FindAction("ToggleTheme");
-            IsEnabledInput = true;
+            IsInputEnabled = true;
 
-            // UI
-            Score = 0;
-            Lives = LivesMax;
-            SetInstructions();
-            SetTitle();
+            // Model
+            _gameModel = new GameModel();
+            _gameModel.Score.Subscribe(GameModel_OnScoreChanged).AddTo(_disposable);
+            _gameModel.Lives.Subscribe(GameModel_OnLivesChanged).AddTo(_disposable);
+            _gameModel.Score.Value = GameModel.ScoreMin;
+            _gameModel.Lives.Value = GameModel.LivesMax;
+
+            // View
+            _gameView.Initialize(_gameModel);
+
+            // Singleton
+            MyProjectSingleton.Instance.ThemeManager.IsDark.Subscribe(MyProjectSingleton_OnIsDarkChanged).AddTo(_disposable);
         }
 
         /// <summary>
-        /// Set the instructions based on the current input configuration.
+        /// Runs once per Scene during the end. Use for deinitialization
         /// </summary>
-        private void SetInstructions()
+        protected void OnDestroy()
         {
-            HudUI.InstructionsLabel.text = $"Instructions: WASD/Arrows, Spacebar, R, T";
-        }
-
-        /// <summary>
-        /// Set the title based
-        /// </summary>
-        private void SetTitle()
-        {
-            string themeName = "Light";
-            if (MyProjectSingleton.Instance.ThemeManager.IsDark)
-            {
-                themeName = "Dark";
-            }
-
-            HudUI.TitleLabel.text = $"{SceneManager.GetActiveScene().name} ({themeName})";
+            _disposable?.Dispose();
         }
 
         /// <summary>
@@ -163,13 +125,13 @@ namespace RMC.MyProject.Scenes
         /// </summary>
         protected void Update()
         {
-            if (!IsEnabledInput)
+            if (!IsInputEnabled)
             {
                 return;
             }
             
-            UpdateIsPlayerGrounded();
-            HandleUserInput();
+            CheckIsPlayerGrounded();
+            CheckUserInput();
             CheckPlayerFalling();
         }
 
@@ -178,11 +140,11 @@ namespace RMC.MyProject.Scenes
         /// <summary>
         /// Take user input from keyboard/mouse/gamepad
         /// </summary>
-        private async void HandleUserInput()
+        private void CheckUserInput()
         {
             Vector2 moveInputVector2 = _movePlayerInputAction.ReadValue<Vector2>();
 
-            if (moveInputVector2.magnitude > MoveInputMinimumMagnitude)
+            if (moveInputVector2.magnitude > GameModel.MoveInputMinimumMagnitude)
             {
                 Vector3 moveInputVector3 = new Vector3
                 (
@@ -215,31 +177,10 @@ namespace RMC.MyProject.Scenes
                 IsPlayerGrounded = false; // Prevent immediate re-jump until next ground check
 
                 // Reward points per jump
-                Score += 1;
+                _gameModel.Score.Value += 1;
 
-                //Check game over
-                if (Score >= ScoreMax)
-                {
-                    // Play sound
-                    PlayAudioClip(GameWinAudioClip);
-
-                    // Disable player
-                    IsEnabledInput = false;
-
-                    // Wait before disable (Cosmetic polish)
-                    await Task.Delay(3000/2);    
-                    
-                    // Wait for rest of sound
-                    await Task.Delay(3000/2);    
-                    
-                    // Reload
-                    ReloadGame();
-                    return;
-                }
-                
                 // Play sound
                 PlayAudioClip(PlayerJumpAudioClip);
-          
             }
             
             if (_resetGameInputAction.WasPerformedThisFrame())
@@ -263,17 +204,10 @@ namespace RMC.MyProject.Scenes
             if (_playerRigidBody.transform.position.y < -5)
             {
                 // Decrement life
-                Lives -= 1;
+                _gameModel.Lives.Value -= 1;
                 
                 // Play sound
                 PlayAudioClip(PlayerResetAudioClip);
-                
-                //Check game over
-                if (Lives <= 0)
-                {
-                    ReloadGame();
-                    return;
-                }
                 
                 // Reset player position
                 _playerRigidBody.transform.position = new Vector3(0, 0, 0);
@@ -295,22 +229,20 @@ namespace RMC.MyProject.Scenes
         /// </summary>
         private void ToggleTheme()
         {
-            MyProjectSingleton.Instance.ThemeManager.IsDark =
-                !MyProjectSingleton.Instance.ThemeManager.IsDark;
-
-            SetTitle();
+            MyProjectSingleton.Instance.ThemeManager.IsDark.Value =
+                !MyProjectSingleton.Instance.ThemeManager.IsDark.Value;
         }
 
         /// <summary>
         /// Check if the player is grounded using a raycast.
         /// </summary>
-        private void UpdateIsPlayerGrounded()
+        private void CheckIsPlayerGrounded()
         {
             // Raycast slightly below the rigidbody position to detect ground.
             // Assumes pivot near center; adjust distance in Inspector.
             var playerCenterpoint = _playerRigidBody.transform.position;
             Ray playerCenterpointDownward = new Ray(playerCenterpoint, Vector3.down);
-            IsPlayerGrounded= Physics.Raycast(playerCenterpointDownward, out _, PhysicsRaycastMaximumDistance);
+            IsPlayerGrounded= Physics.Raycast(playerCenterpointDownward, out _, GameModel.PhysicsRaycastMaximumDistance);
         }
 
         /// <summary>
@@ -324,5 +256,46 @@ namespace RMC.MyProject.Scenes
 
         //  Event Handlers --------------------------------
 
+        private void MyProjectSingleton_OnIsDarkChanged(bool value)
+        {
+            string themeName = "Light";
+            if (value)
+            {
+                themeName = "Dark";
+            }
+            _gameModel.Title.Value = $"{SceneManager.GetActiveScene().name} ({themeName})";
+            _gameModel.Instructions.Value = "Instructions: WASD/Arrows, Spacebar, R, T";
+        }
+
+        private async void GameModel_OnScoreChanged(int value)
+        {
+            //Check game over
+            if (_gameModel.Score.Value >= GameModel.ScoreMax)
+            {
+                // Play sound
+                PlayAudioClip(GameWinAudioClip);
+
+                // Disable player
+                IsInputEnabled = false;
+
+                // Wait before disable (Cosmetic polish)
+                await Task.Delay(3000/2);
+
+                // Wait for rest of sound
+                await Task.Delay(3000/2);
+
+                // Reload
+                ReloadGame();
+            }
+        }
+
+        private void GameModel_OnLivesChanged(int value)
+        {
+            //Check game over
+            if (_gameModel.Lives.Value <= 0)
+            {
+                ReloadGame();
+            }
+        }
     }
 }
