@@ -15,6 +15,8 @@ namespace RMC.MyProject.UI
         public Label ScoreLabel { get { return _uiDocument?.rootVisualElement.Q<Label>("UpperRightLabel"); }}
         public Label InstructionsLabel { get { return _uiDocument?.rootVisualElement.Q<Label>("LowerLeftLabel"); }}
         public Label TitleLabel { get { return _uiDocument?.rootVisualElement.Q<Label>("LowerRightLabel"); }}
+        public VisualElement CenterContainer { get { return _uiDocument?.rootVisualElement.Q<VisualElement>("CenterContainer"); } }
+        public Label CenterLabel { get { return _uiDocument?.rootVisualElement.Q<Label>("CenterLabel"); } }
 
         //  Fields ----------------------------------------
         [SerializeField]
@@ -50,6 +52,12 @@ namespace RMC.MyProject.UI
             _gameModel.Score.Subscribe(GameModel_OnScoreChanged).AddTo(_disposable);
             _gameModel.Title.Subscribe(GameModel_OnTitleChanged).AddTo(_disposable);
             _gameModel.Instructions.Subscribe(GameModel_OnInstructionsChanged).AddTo(_disposable);
+            _gameModel.State.Subscribe(GameModel_OnStateChanged).AddTo(_disposable);
+            _gameModel.Prompt.Subscribe(GameModel_OnPromptChanged).AddTo(_disposable);
+
+            // Initialize current UI state immediately
+            GameModel_OnStateChanged(_gameModel.State.Value);
+            GameModel_OnPromptChanged(_gameModel.Prompt.Value);
         }
 
         //  Event Handlers --------------------------------
@@ -72,6 +80,26 @@ namespace RMC.MyProject.UI
         private void GameModel_OnLivesChanged(int value)
         {
             LivesLabel.text = $"Lives: {_gameModel.Lives.Value:000}/{GameModel.LivesMax:000}";
+        }
+
+        private void GameModel_OnStateChanged(GameState state)
+        {
+            // Show/Hide the centered overlay during start/stop phases
+            if (CenterContainer == null)
+            {
+                return;
+            }
+
+            bool isVisible = state == GameState.GameStarting || state == GameState.GameStopping;
+            CenterContainer.style.opacity = isVisible ? 1 : 0;
+        }
+
+        private void GameModel_OnPromptChanged(string text)
+        {
+            if (CenterLabel != null)
+            {
+                CenterLabel.text = text ?? string.Empty;
+            }
         }
     }
 }

@@ -28,6 +28,35 @@
     margin:0;
 }
 
+
+.center-container {
+    position: absolute;
+    padding: 20px;
+    width: auto;
+    height: auto;
+
+    /* Center on screen without stretching */
+    left: 50%;
+    top: 30%;
+    translate: -50% -50%;
+
+    /* Center the label inside the container */
+    justify-content: center;
+    align-items: center;
+    opacity:0;
+
+    background-color: var(--theme-background-color);
+    border-bottom-right-radius:var(--border-radius-primary);
+    border-bottom-left-radius:var(--border-radius-primary);
+    border-top-right-radius:var(--border-radius-primary);
+    border-top-left-radius:var(--border-radius-primary);
+}
+
+.center-container .unity-text-element{
+    font-size: 100px;
+    -unity-text-align: middle-center;
+}
+
 .corner-container {
     flex-grow:1;
     margin:0;
@@ -81,3 +110,4 @@
 .alignLowerRight .unity-text-element{
     -unity-text-align: middle-right;
 }
+

@@ -1,4 +1,4 @@
-using System.Threading.Tasks;
+using Cysharp.Threading.Tasks;
 using R3;
 using RMC.Audio;
 using RMC.MyProject.UI;
@@ -110,6 +110,9 @@ namespace RMC.MyProject.Scenes
 
             // Singleton
             MyProjectSingleton.Instance.ThemeManager.IsDark.Subscribe(MyProjectSingleton_OnIsDarkChanged).AddTo(_disposable);
+
+            // Start game state flow
+            RunGameStarting();
         }
 
         /// <summary>
@@ -233,6 +236,45 @@ namespace RMC.MyProject.Scenes
                 !MyProjectSingleton.Instance.ThemeManager.IsDark.Value;
         }
 
+        private async void RunGameStarting()
+        {
+            // Begin the GameStarting phase
+            await EnterGameStartingAsync();
+        }
+
+        private async UniTask EnterGameStartingAsync()
+        {
+            IsInputEnabled = false;
+            _gameModel.Prompt.Value = "Game Starting";
+            _gameModel.State.Value = GameState.GameStarting;
+
+            await UniTask.Delay(2000);
+
+            _gameModel.Prompt.Value = string.Empty;
+            _gameModel.State.Value = GameState.GameStarted;
+            IsInputEnabled = true;
+        }
+
+        private async UniTask EnterGameStoppingAsync(bool didWin)
+        {
+            IsInputEnabled = false;
+            _gameModel.Prompt.Value = didWin ? "You Win" : "You Lose";
+            _gameModel.State.Value = GameState.GameStopping;
+
+            if (didWin)
+            {
+                PlayAudioClip(GameWinAudioClip);
+            }
+
+            await UniTask.Delay(2000);
+
+            _gameModel.Prompt.Value = string.Empty;
+            _gameModel.State.Value = GameState.GameStopped;
+
+            // Immediately loop back to starting
+            await EnterGameStartingAsync();
+        }
+
         /// <summary>
         /// Check if the player is grounded using a raycast.
         /// </summary>
@@ -272,29 +314,23 @@ namespace RMC.MyProject.Scenes
             //Check game over
             if (_gameModel.Score.Value >= GameModel.ScoreMax)
             {
-                // Play sound
-                PlayAudioClip(GameWinAudioClip);
-
-                // Disable player
-                IsInputEnabled = false;
-
-                // Wait before disable (Cosmetic polish)
-                await Task.Delay(3000/2);
-
-                // Wait for rest of sound
-                await Task.Delay(3000/2);
-
-                // Reload
-                ReloadGame();
+                // Transition to stopping with win prompt
+                if (_gameModel.State.Value == GameState.GameStarted)
+                {
+                    await EnterGameStoppingAsync(true);
+                }
             }
         }
 
-        private void GameModel_OnLivesChanged(int value)
+        private async void GameModel_OnLivesChanged(int value)
         {
             //Check game over
             if (_gameModel.Lives.Value <= 0)
             {
-                ReloadGame();
+                if (_gameModel.State.Value == GameState.GameStarted)
+                {
+                    await EnterGameStoppingAsync(false);
+                }
             }
         }
     }

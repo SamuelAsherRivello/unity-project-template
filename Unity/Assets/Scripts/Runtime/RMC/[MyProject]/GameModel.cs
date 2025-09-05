@@ -1,7 +1,19 @@
 ﻿using R3;
+using UnityEngine;
 
 namespace RMC.MyProject.Scenes
 {
+    /// <summary>
+    /// The current state of the game.
+    /// </summary>
+    public enum GameState
+    {
+        GameStarting,
+        GameStarted,
+        GameStopping,
+        GameStopped
+    }
+    
     /// <summary>
     /// Stores data for the game.
     /// </summary>
@@ -19,5 +31,15 @@ namespace RMC.MyProject.Scenes
         public ReactiveProperty<int> Lives = new ReactiveProperty<int>(LivesMax);
         public ReactiveProperty<string> Title = new ReactiveProperty<string>();
         public ReactiveProperty<string> Instructions = new ReactiveProperty<string>();
+
+        // Game State -------------------------------------
+        public ReactiveProperty<GameState> State = new ReactiveProperty<GameState>(GameState.GameStarting);
+        public ReactiveProperty<string> Prompt = new ReactiveProperty<string>(string.Empty);
+
+        //  Methods ---------------------------------------
+        public GameModel()
+        {
+            Debug.Log($"{GetType().Name}.Constructor()");
+        }
     }
 }
