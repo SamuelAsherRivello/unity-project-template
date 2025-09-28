@@ -65,15 +65,17 @@ This template contains the following:
 
 If you want these template basics **plus** additional features, check out the following:
 
-| Repository                                                                                         | Template Basics | AR  | VR  | Multiplayer | WebGPU | DOTS |
-|---------------------------------------------------------------------------------------------------|-----------------|-----|-----|-------------|--------|------|
-| [unity-project-template](https://github.com/SamuelAsherRivello/unity-project-template)             | ✅              | ❌  | ❌  | ❌          | ❌     | ❌   |
-| [unity-project-template-ar](https://github.com/SamuelAsherRivello/unity-project-template-ar)       | ✅              | ✅  | ❌  | ❌          | ❌     | ❌   |
-| [unity-project-template-vr](https://github.com/SamuelAsherRivello/unity-project-template-vr)       | ✅              | ❌  | ✅  | ❌          | ❌     | ❌   |
-| [unity-project-template-coherence-multiplayer](https://github.com/SamuelAsherRivello/unity-project-template-coherence-multiplayer) | ✅              | ❌  | ❌  | ✅          | ❌     | ❌   |
-| [unity-multiplayer-ngo-2d-playground](https://github.com/SamuelAsherRivello/unity-multiplayer-ngo-2d-playground) | ✅              | ❌  | ❌  | ✅          | ❌     | ❌   |
-| [unity-project-template-webgpu](https://github.com/SamuelAsherRivello/unity-project-template-webgpu) | ✅              | ❌  | ❌  | ❌          | ✅     | ❌   |
-| [rmc-dots-examples](https://github.com/SamuelAsherRivello/rmc-dots-examples)                       | ✅              | ❌  | ❌  | ❌          | ❌     | ✅   |
+| Repository                                                                                         | Template Basics | UI Toolkit | AR  | VR  | Multiplayer | WebGPU | DOTS |
+|---------------------------------------------------------------------------------------------------|-----------------|------------|-----|-----|-------------|--------|------|
+| [unity-project-template](https://github.com/SamuelAsherRivello/unity-project-template)             | ✅              | ✅          | ❌  | ❌  | ❌          | ❌     | ❌   |
+| [unity-project-template-ui-toolkit](https://github.com/SamuelAsherRivello/unity-project-template-ui-toolkit) | ✅              | ✅          | ❌  | ❌  | ❌          | ❌     | ❌   |
+| [unity-project-template-ar](https://github.com/SamuelAsherRivello/unity-project-template-ar)       | ✅              | ❌          | ✅  | ❌  | ❌          | ❌     | ❌   |
+| [unity-project-template-vr](https://github.com/SamuelAsherRivello/unity-project-template-vr)       | ✅              | ❌          | ❌  | ✅  | ❌          | ❌     | ❌   |
+| [unity-project-template-coherence-multiplayer](https://github.com/SamuelAsherRivello/unity-project-template-coherence-multiplayer) | ✅              | ❌          | ❌  | ❌  | ✅          | ❌     | ❌   |
+| [unity-multiplayer-ngo-2d-playground](https://github.com/SamuelAsherRivello/unity-multiplayer-ngo-2d-playground) | ✅              | ❌          | ❌  | ❌  | ✅          | ❌     | ❌   |
+| [unity-project-template-webgpu](https://github.com/SamuelAsherRivello/unity-project-template-webgpu) | ✅              | ❌          | ❌  | ❌  | ❌          | ✅     | ❌   |
+| [rmc-dots-examples](https://github.com/SamuelAsherRivello/rmc-dots-examples)                       | ✅              | ❌          | ❌  | ❌  | ❌          | ❌     | ✅   |
+
 
 
 
